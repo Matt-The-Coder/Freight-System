@@ -111,7 +111,7 @@ const AddMaintenance = () => {
   {/* Card Section */}
   <div className=" mx-auto">
     {/* Card */}
-    <div className="bg-white dark:bg-neutral-900">
+    <div className="bg-white dark:bg-neutral-800">
       <form  onSubmit={(e)=>{createMaintenance(e)}}>
         {/* Section */}
         <div className="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">

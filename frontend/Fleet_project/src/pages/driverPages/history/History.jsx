@@ -694,7 +694,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -833,7 +833,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -893,7 +893,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -962,7 +962,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1030,7 +1030,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1090,7 +1090,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1149,7 +1149,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1208,7 +1208,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1284,7 +1284,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1343,7 +1343,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1402,7 +1402,7 @@ const DriverHistory = () => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}

@@ -111,7 +111,7 @@ const Settings = () => {
             <Breadcrumbs title="Settings" subtitle="Personal Info"/>
       <Sidebar/>
       <div className="w-full lg:ps-64">
-    <div className="sm:space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 bg-white dark:bg-neutral-800">
         <>
   {/* Card Section */}
   <div className="max-w-4xl mx-auto">

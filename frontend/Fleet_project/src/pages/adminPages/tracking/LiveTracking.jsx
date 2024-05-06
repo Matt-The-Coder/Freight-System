@@ -403,19 +403,19 @@ const LiveTracking = ({socket}) => {
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
     <div className="LiveTracking">
 
-      <div className="tracking-details">
+      <div className="tracking-details sm:flex">
 
         {isMobile ?
           (<>
             <div className="switch-pager">
-              <h4 onClick={switchPage} className='bg-gray-300 text-gray-700 dark:text-neutral-400 dark:bg-neutral-900 border-r-4'>Map Data</h4>
+              <h4 onClick={switchPage} className='bg-gray-300 text-gray-700 dark:text-neutral-400 dark:bg-neutral-900 border-r-2'>Map Data</h4>
               <h4 onClick={switchPage} className='bg-gray-300 text-gray-700 dark:text-neutral-400 dark:bg-neutral-900'>Transit Data</h4>
             </div>
             <div className="switch-pager-content">
               {transitData && <>
-                <div className="transportCard">
+                <div className="transportCard bg-neutral-800 dark:bg-white">
 
-                  <div className="card">
+                  <div className="card bg-white dark:bg-neutral-800 dark:text-white">
                     <div className="cardTitle">
                       <i className='bx bxs-car-mechanic' id='carBx'></i>
                       <h4>Vehicle Data</h4>
@@ -447,7 +447,7 @@ const LiveTracking = ({socket}) => {
                       </div>
                     </div>
                   </div>
-                  <div className="card">
+                  <div className="card bg-white dark:bg-neutral-800 dark:text-white">
                     <div className="cardTitle">
                       <i className='bx bxs-truck' id='truckBx' ></i>
                       <h4>Transportation Data</h4>
@@ -481,7 +481,7 @@ const LiveTracking = ({socket}) => {
               </>
 
             </div>
-            <div className="detail-slide bg-white dark:bg-neutral-900" ref={detail}>
+            <div className="detail-slide bg-white dark:bg-neutral-800 dark:text-white" ref={detail}>
               <div className="arrow-up">
                 <i className='bx bx-arrow-from-bottom bx-fade-up' id='arrow-up' ref={arrowUp} onClick={() => { openDetail("up") }}></i>
                 <i class='bx bx-arrow-from-top bx-fade-down' id='arrow-up' style={{ display: "none" }} ref={arrowDown} onClick={() => { openDetail("down") }}></i>
@@ -618,74 +618,73 @@ const LiveTracking = ({socket}) => {
           (<>
 
             <div ref={mapContainer} className="map-container" />
-            <div className="weatherTitle">
-              <h3>Weather Condition</h3>
-            </div>
-            <div className="weatherData">
+            <div className="weatherData w-full">
               {/* <div className="weatherIcon">
                 {weatherCondition && <p>Current Weather: {weatherCondition.weather.description} </p> &&
                   <img src={weatherIcon} alt="weather icon" />}
               </div> */}
-              <div className="rainfallRate">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="logo">
-                      <i className='bx bx-cloud-light-rain'></i>
-                    </div>
-                    {weatherCondition && <p>Rainfall Rate: {parseFloat(weatherCondition.precip)} mm/hr</p>}
-                  </div>
-                  <div className="flip-card-back">
-                    {weatherCondition && <>{
+              <div class="hs-accordion-group">
+              <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-eight">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-two">
+      Weather Alert{weatherAlerts?.alertTitle == null ? <label>No current alerts</label> : <label>{weatherAlerts.alertTitle}</label>}
+
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-two" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-eight">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherAlerts?.alertTitle && <p>Weather start time: {weatherAlerts.alertStartTime}</p>}
+                {weatherAlerts?.alertTitle && <p>Weather ends in: {weatherAlerts.alertEndTime}</p>}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-one">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-one">
+      Rainfall Rate <label htmlFor="">{parseFloat(weatherCondition?.precip)} mm/hr</label>  
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-one">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherCondition && <>{
                       parseFloat(weatherCondition.precip) < 2.6 ? <label> Light Precipitation: Minimal impact on a driver's view while delivering cargo. Roads may become slightly wet, but visibility remains relatively clear, making for safe driving conditions.</label> :
                         parseFloat(weatherCondition.precip) < 7.7 ? <label> Moderate Precipitation: Reduced visibility during cargo delivery. Rain intensifies, requiring windshield wipers and extra caution on wet roads to ensure cargo safety.</label> :
                           parseFloat(weatherCondition.precip) < 51 ? <label> Heavy Precipitation: Significant reduction in visibility when delivering cargo. Intense rain can impair the driver's view and road conditions, demanding extra care to secure and transport goods safely.</label> :
                             <label> Very Heavvy Precipitation: Extremely poor visibility during cargo delivery. Hazardous conditions arise, posing significant risks to cargo, driver safety, and the timely completion of deliveries.</label>}
                     </>}
-                  </div>
-                </div>
-
-
-              </div>
-              <div className="air">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="logo">
-                      <i className='bx bx-wind'></i>
-                    </div>
-                    <div>
-                      {weatherCondition && <p>Air Quality: {weatherCondition.aqi} </p>}
-                      {weatherCondition && <p>Wind Speed: {weatherCondition.wind_spd}m/s</p>}
-                      {weatherCondition && <p>Wind Direction: {weatherCondition.wind_cdir_full}</p>}
-                      {weatherCondition && <p>Wind Angle: {weatherCondition.wind_dir}°</p>}
-                    </div>
-
-                  </div>
-                  <div className="flip-card-back">
-                    <div className="airQuality">
-                      {weatherCondition && <>{
-                        weatherCondition.aqi < 51 ? <label> Good: Ideal conditions for cargo delivery and driver well-being. Minimal pollution, allowing for smooth and efficient transportation.</label> :
-                          weatherCondition.aqi < 101 ? <label> Moderate: Favorable for cargo delivery and driver comfort. Slightly elevated pollution levels may have minimal impact on logistics.</label> :
-                            weatherCondition.aqi < 151 ? <label> Unhealthy for Sensitive Groups: Adequate for cargo delivery but may affect driver health and efficiency. Increased pollution levels may require occasional breaks. </label> :
-                              weatherCondition.aqi < 201 ? <label> Unhealthy: Cargo delivery may face delays due to reduced driver efficiency. Drivers with respiratory issues may experience discomfort.</label> :
-                                weatherCondition.aqi < 301 ? <label> Very Unhealthy: Challenging conditions for cargo delivery. Reduced visibility and driver discomfort are likely. Delays and safety precautions are necessary.</label> :
-                                  <label> Hazardous: High risk for cargo delivery and driver safety. Significant visibility issues and health hazards for drivers. Delivery delays and safety measures are crucial.</label>}</>}
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-
-              <div className="temperature">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="logo">
-                      <i className='bx bxs-thermometer'></i>
-                    </div>
-                    {weatherCondition && <p>Temperature: {weatherCondition.temp}°C </p>}
-                  </div>
-                  <div className="flip-card-back">
-                    {weatherCondition && <>{
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-one">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-one">
+    Temperature <label htmlFor="">{weatherCondition?.temp}°C </label>
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-one">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherCondition && <>{
                       weatherCondition.temp < -31 ? <label> Deep Freeze: Risk of freezing and potential damage to temperature-sensitive items. Proper insulation and heating may be required.</label> :
                         weatherCondition.temp < -21 ? <label> Extreme Cold: Risk of freezing and potential damage to temperature-sensitive items. Proper insulation and heating may be required.</label> :
                           weatherCondition.temp < -11 ? <label> Very Cold: Goods can be at risk of freezing, impacting their quality and integrity. Insulation and temperature control are crucial.</label> :
@@ -697,37 +696,26 @@ const LiveTracking = ({socket}) => {
                                       <label>Extreme Heat: Cargo can experience severe damage, including melting, combustion, or spoilage. Extreme temperature control measures are necessary.</label>
 
                     }</>}
-                  </div>
-                </div>
-              </div>
-              <div className="humidity">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="logo">
-                      <i className='bx bx-droplet' ></i>
-                    </div>
-                    {weatherCondition && <p>Humidity: {weatherCondition.rh}% </p>}
-                  </div>
-                  <div className="flip-card-back">
-                    {weatherCondition && <>{
-                      weatherCondition.rh < 31 ? <label> Low Humidity: Low humidity can result in a clear windshield but may lead to discomfort due to dry air. Reduced humidity poses minimal visibility challenges for drivers.</label> :
-                        weatherCondition.rh < 61 ? <label> Moderate Humidity: Comfortable humidity levels for drivers, maintaining clear visibility through the windshield. Condensation and fogging are less likely.</label> :
-                          weatherCondition.rh < 81 ? <label> High Humidity: Increased humidity may lead to slight fogging on the windshield. Drivers may need to use defogging systems occasionally.</label> :
-                            <label> Very High Humidity: High humidity can cause significant fogging on the windshield, reducing visibility. Frequent use of defoggers and wipers may be necessary for safe driving.</label>
-                    }</>}
-                  </div>
-                </div>
-              </div>
-              <div className="visibility">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="logo">
-                      <i className='bx bx-low-vision'></i>
-                    </div>
-                    {weatherCondition && <p>Visibility: {weatherCondition.vis}km </p>}
-                  </div>
-                  <div className="flip-card-back">
-                    {weatherCondition && <> {
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-one">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-one">
+    Visibility <label htmlFor="">{weatherCondition?.vis}km</label> 
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-one">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherCondition && <> {
                       weatherCondition.vis < 0.5 ? <label> Extremely hazardous conditions for cargo delivery. Nearly zero visibility demands extreme caution, and in some cases, postponing the delivery may be necessary.</label> :
                         weatherCondition.vis < 1.1 ? <label> Very Poor Visibility: Hazardous conditions during cargo delivery. Extreme caution required, as visibility is severely compromised.</label> :
                           weatherCondition.vis < 2.1 ? <label> Poor Visibility: Challenging conditions for cargo delivery. Visibility limitations may impact delivery schedules and safety.</label> :
@@ -736,57 +724,50 @@ const LiveTracking = ({socket}) => {
                                 weatherCondition.vis < 10.1 ? <label> Very Good Visibility: Good conditions for cargo delivery. Most objects are visible, allowing for safe navigation.</label> :
                                   <label> Excellent Visibility: Optimal conditions for cargo delivery. Clear visibility ensures safe and efficient transportation.</label>
                     }</>}
-                  </div>
-                </div>
-              </div>
-              <div className="solar">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="logo">
-                      <i className='bx bx-sun' ></i>
-                    </div>
-                    <div>
-                      {weatherCondition && <p>UV Index: {(weatherCondition.uv).toFixed(2)}</p>}
-                      {weatherCondition && <p>Solar Radiation: {weatherCondition.solar_rad} W/m² </p>}
-                    </div>
-                  </div>
-                  <div className="flip-card-back">
-                    <div className="uvIndex">
-                      {weatherCondition && <> {
-                        weatherCondition.uv < 3 ? <label> Low: Minimal environmental impact. UV levels are low, and there is minimal risk of harm to the environment.</label> :
-                          weatherCondition.uv < 6 ? <label> Moderate: Moderate environmental impact. UV levels pose some risk to ecosystems, potentially affecting plant growth and aquatic habitats.</label> :
-                            weatherCondition.uv < 8 ? <label> High: Significant environmental impact. High UV levels can harm aquatic life, damage crops, and impact ecosystems by disrupting natural processes.</label> :
-                              weatherCondition.uv < 11 ? <label> Very High: Severe environmental impact. Very high UV levels can lead to extensive damage to crops, aquatic ecosystems, and marine habitats.</label> :
-                                <label> Extreme: Extreme environmental impact. Extreme UV levels can cause extensive harm to the environment, including severe damage to ecosystems, aquatic life, and crops.</label>
-                      }</>}
-                    </div>
-                    <div className="solarRadiation">
-                      {weatherCondition && <> {
-                        weatherCondition.solar_rad < 101 ? <label> Low Solar Radiation: Limited sunlight, potentially impacting solar energy generation and reducing its environmental benefits. Cargo deliveries may rely more on conventional energy sources.</label> :
-                          weatherCondition.solar_rad < 251 ? <label> Moderate Solar Radiation: Adequate sunlight for reasonable solar energy production, contributing to reduced carbon emissions. Cargo deliveries benefit from a cleaner energy mix.</label> :
-                            weatherCondition.solar_rad < 501 ? <label> High Solar Radiation: Abundant sunlight, optimizing solar energy generation and reducing reliance on non-renewable energy sources. This positively impacts the environment and cargo deliveries.</label> :
-                              weatherCondition.solar_rad < 1000 ? <label> Very High Solar Radiation: Intense sunlight, which can lead to elevated temperatures. Cargo deliveries, especially for heat-sensitive goods, may require special precautions.</label> :
-                                <label> Extreme Solar Radiation: Excessive solar exposure, potentially causing extreme heat conditions. Cargo and driver well-being during deliveries become critical concerns.</label>
-                      }</>}
-                    </div>
-                  </div>
-                </div>
+        </p>
+      </div>
+    </div>
+  </div>
 
-              </div>
-              <div className="pressure">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="logo">
-                      <i className='bx bx-tachometer' ></i>
-                    </div>
-                    <div>
-                      {weatherCondition && <p>Air Pressure: {weatherCondition.pres} mb </p>}
-                      {weatherCondition && <p>Sea Level Pressure: {weatherCondition.slp.toFixed(1)} mb </p>}
-                    </div>
-                  </div>
-                  <div className="flip-card-back">
-                    <div className="airPressure">
-                      {weatherCondition && <> {
+  <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-one">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-one">
+    Humidity <label htmlFor="">{weatherCondition?.rh}%</label>
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-one">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherCondition && <>{
+                      weatherCondition.rh < 31 ? <label> Low Humidity: Low humidity can result in a clear windshield but may lead to discomfort due to dry air. Reduced humidity poses minimal visibility challenges for drivers.</label> :
+                        weatherCondition.rh < 61 ? <label> Moderate Humidity: Comfortable humidity levels for drivers, maintaining clear visibility through the windshield. Condensation and fogging are less likely.</label> :
+                          weatherCondition.rh < 81 ? <label> High Humidity: Increased humidity may lead to slight fogging on the windshield. Drivers may need to use defogging systems occasionally.</label> :
+                            <label> Very High Humidity: High humidity can cause significant fogging on the windshield, reducing visibility. Frequent use of defoggers and wipers may be necessary for safe driving.</label>
+                    }</>}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-one">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-one">
+    Air Pressure <label htmlFor="">{weatherCondition?.pres} mb</label>
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-one">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherCondition && <> {
                         weatherCondition.slp < 950 ? <label>Very Low Air Pressure</label> :
                           weatherCondition.slp < 980 ? <label>Low Air Pressure </label> :
                             weatherCondition.slp < 1000 ? <label>Normal Air Pressure </label> :
@@ -794,9 +775,8 @@ const LiveTracking = ({socket}) => {
                                 <label>High Air-Level Pressure: </label>
 
                       }</>}
-                    </div>
-                    <div className="seaPressure">
-                      {weatherCondition && <>{
+                       Sea Pressure <label htmlFor="">{weatherCondition?.slp.toFixed(1)} mb</label>
+                       {weatherCondition && <>{
                         weatherCondition.slp < 950 ? <label>Very Low Sea-Level Pressure: Extreme severe weather, such as hurricanes, posing significant risks to cargo, drivers, and the environment. Deliveries should be halted or rerouted during such events, with safety as the top priority.</label> :
                           weatherCondition.slp < 980 ? <label>Low Sea-Level Pressure: Unsettled weather conditions may lead to delivery delays and driver safety concerns. It advises adopting precautionary measures.</label> :
                             weatherCondition.slp < 1000 ? <label>Normal Sea-Level Pressure: Suitable for cargo deliveries with no significant weather concerns. This is an optimal period for standard delivery schedules. </label> :
@@ -804,26 +784,92 @@ const LiveTracking = ({socket}) => {
                                 <label>High Sea-Level Pressure: Stable and clear weather, providing favorable conditions for cargo deliveries. However, extremely high pressure may impact air quality, suggesting the need for pollution monitoring. </label>
 
                       }</>}
-                    </div>
-                  </div>
-                </div>
-              </div>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-one">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-one">
+    Solar Radiation: <label htmlFor="">{weatherCondition?.solar_rad} W/m²</label>
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-one">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherCondition && <> {
+                        weatherCondition.solar_rad < 101 ? <label> Low Solar Radiation: Limited sunlight, potentially impacting solar energy generation and reducing its environmental benefits. Cargo deliveries may rely more on conventional energy sources.</label> :
+                          weatherCondition.solar_rad < 251 ? <label> Moderate Solar Radiation: Adequate sunlight for reasonable solar energy production, contributing to reduced carbon emissions. Cargo deliveries benefit from a cleaner energy mix.</label> :
+                            weatherCondition.solar_rad < 501 ? <label> High Solar Radiation: Abundant sunlight, optimizing solar energy generation and reducing reliance on non-renewable energy sources. This positively impacts the environment and cargo deliveries.</label> :
+                              weatherCondition.solar_rad < 1000 ? <label> Very High Solar Radiation: Intense sunlight, which can lead to elevated temperatures. Cargo deliveries, especially for heat-sensitive goods, may require special precautions.</label> :
+                                <label> Extreme Solar Radiation: Excessive solar exposure, potentially causing extreme heat conditions. Cargo and driver well-being during deliveries become critical concerns.</label>
+                      }</>}
+        UV Index: <label htmlFor="">{(weatherCondition?.uv)?.toFixed(2)}</label> 
+        {weatherCondition && <> {
+                        weatherCondition.uv < 3 ? <label> Low: Minimal environmental impact. UV levels are low, and there is minimal risk of harm to the environment.</label> :
+                          weatherCondition.uv < 6 ? <label> Moderate: Moderate environmental impact. UV levels pose some risk to ecosystems, potentially affecting plant growth and aquatic habitats.</label> :
+                            weatherCondition.uv < 8 ? <label> High: Significant environmental impact. High UV levels can harm aquatic life, damage crops, and impact ecosystems by disrupting natural processes.</label> :
+                              weatherCondition.uv < 11 ? <label> Very High: Severe environmental impact. Very high UV levels can lead to extensive damage to crops, aquatic ecosystems, and marine habitats.</label> :
+                                <label> Extreme: Extreme environmental impact. Extreme UV levels can cause extensive harm to the environment, including severe damage to ecosystems, aquatic life, and crops.</label>
+                      }</>}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded-xl dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent" id="hs-active-bordered-heading-one">
+    <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400" aria-controls="hs-basic-active-bordered-collapse-one">
+    Air Quality <label htmlFor="">{weatherCondition?.aqi} </label>
+      <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </svg>
+      <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+      </svg>
+    </button>
+    <div id="hs-basic-active-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-active-bordered-heading-one">
+      <div class="pb-4 px-5">
+        <p class="text-gray-800 dark:text-neutral-200">
+        {weatherCondition && <p>Wind Speed: {weatherCondition?.wind_spd}m/s</p>}
+                      {weatherCondition && <p>Wind Direction: {weatherCondition?.wind_cdir_full}</p>}
+                      {weatherCondition && <p>Wind Angle: {weatherCondition?.wind_dir}°</p>}
+        {weatherCondition && <>{
+                        weatherCondition.aqi < 51 ? <label> Good: Ideal conditions for cargo delivery and driver well-being. Minimal pollution, allowing for smooth and efficient transportation.</label> :
+                          weatherCondition.aqi < 101 ? <label> Moderate: Favorable for cargo delivery and driver comfort. Slightly elevated pollution levels may have minimal impact on logistics.</label> :
+                            weatherCondition.aqi < 151 ? <label> Unhealthy for Sensitive Groups: Adequate for cargo delivery but may affect driver health and efficiency. Increased pollution levels may require occasional breaks. </label> :
+                              weatherCondition.aqi < 201 ? <label> Unhealthy: Cargo delivery may face delays due to reduced driver efficiency. Drivers with respiratory issues may experience discomfort.</label> :
+                                weatherCondition.aqi < 301 ? <label> Very Unhealthy: Challenging conditions for cargo delivery. Reduced visibility and driver discomfort are likely. Delays and safety precautions are necessary.</label> :
+                                  <label> Hazardous: High risk for cargo delivery and driver safety. Significant visibility issues and health hazards for drivers. Delivery delays and safety measures are crucial.</label>}</>}
+        </p>
+      </div>
+    </div>
+  </div>
 
 
-              <div className="weatherAlert">
-                {weatherAlerts && <p>Weather alerts: {weatherAlerts.alertTitle == null ? <label>No current alerts</label> : <label>{weatherAlerts.alertTitle}</label>}</p>}
-                {weatherAlerts?.alertTitle && <p>Weather start time: {weatherAlerts.alertStartTime}</p>}
-                {weatherAlerts?.alertTitle && <p>Weather ends in: {weatherAlerts.alertEndTime}</p>}
-              </div>
+
+
+</div>
+
+
+
+
 
             </div>
             <div className="transportDetails" ref={tDetail} onClick={openTransportDetail}>
               <i className='bx bxs-up-arrow bx-fade-up' id='showDetail' ></i>
               {transportDetail &&
                 <>
-                  <div className="transportCard bg-neutral-800 dark:bg-neutral-800">
+                  <div className="transportCard bg-neutral-800 dark:bg-white">
 
-                    <div className="card bg-white dark:bg-neutral-800">
+                    <div className="card bg-white dark:bg-neutral-800 dark:text-white">
                       <div className="cardTitle">
                         <i className='bx bxs-car-mechanic' id='carBx'></i>
                         <h4>Vehicle Data</h4>
@@ -855,7 +901,7 @@ const LiveTracking = ({socket}) => {
                         </div>
                       </div>
                     </div>
-                    <div className="card bg-white dark:bg-neutral-800">
+                    <div className="card bg-white dark:bg-neutral-800 dark:text-white">
                       <div className="cardTitle">
                         <i className='bx bxs-truck' id='truckBx' ></i>
                         <h4>Transportation Data</h4>
@@ -891,7 +937,7 @@ const LiveTracking = ({socket}) => {
               <>
                 <div className="boxInfo bg-white dark:bg-neutral-800" ref={bInfo}>
                   <div className="boxInfoNav" ref={boxInfoNav}>
-                    <h3 onClick={() => { openBoxInfo(1) }}>Directions</h3>
+                    <h3 className='dark:text-white' onClick={() => { openBoxInfo(1) }}>Directions</h3>
                     {/* <h4 onClick={() => { openBoxInfo(2) }}>Message</h4>
                     <h4 onClick={() => { openBoxInfo(3) }}>Reminder</h4> */}
                   </div>

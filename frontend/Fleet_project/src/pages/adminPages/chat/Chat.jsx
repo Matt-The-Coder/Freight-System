@@ -95,7 +95,7 @@ const AdminChat = ({ socket }) => {
     <Breadcrumbs title="Chat"/>
       <Sidebar/>
       <div className="w-full lg:ps-64">
-      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 bg-white dark:bg-neutral-800">
       <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">
       <div class="p-4 md:p-5">
         <div class="flex justify-between items-center">

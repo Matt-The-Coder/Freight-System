@@ -101,7 +101,7 @@ const AdminHistory = ({ socket }) => {
             <Breadcrumbs title="History" subtitle="Deliveries" isModal={true} />
             <Sidebar isModal={true} />
             <div className="w-full lg:ps-64">
-                <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+                <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 lg-[600px] bg-white dark:bg-neutral-800">
                 <div className="w-auto px-6 py-4 flex gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700 items-center">
                         {/* Input */}
                         <div className="sm:col-span-1">
@@ -623,14 +623,14 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white dark:text-white">
                     <svg
   width={512}
   height={512}
   viewBox="0 0 512 512"
   style={{ color: "currentColor" }}
   xmlns="http://www.w3.org/2000/svg"
-  className="h-[55px] w-[55px]"
+  className="h-[55px] w-[55px] "
 >
   <rect
     width={512}
@@ -762,7 +762,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -822,7 +822,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -891,7 +891,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -959,7 +959,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1019,7 +1019,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1078,7 +1078,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1137,7 +1137,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1213,7 +1213,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1272,7 +1272,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}
@@ -1331,7 +1331,7 @@ const AdminHistory = ({ socket }) => {
                   href="#"
                 >
                   <div className="flex justify-center items-center">
-                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl">
+                    <div className="mt-1.5 flex justify-center flex-shrink-0 rounded-s-xl dark:text-white">
                     <svg
   width={512}
   height={512}

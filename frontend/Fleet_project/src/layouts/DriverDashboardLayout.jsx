@@ -153,7 +153,7 @@ const DriverDashboardLayout = ({ socket }) => {
 
 
         </>)}
-<Header image={image}/>
+<Header image={image}{...user}/>
 {/* <Breadcrumbs/>
 <Sidebar/> */}
   {/* Content */}

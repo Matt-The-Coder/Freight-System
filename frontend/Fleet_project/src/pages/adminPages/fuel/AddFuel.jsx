@@ -77,12 +77,12 @@ const AddFuel = () => {
                 <Breadcrumbs title="History" subtitle="Deliveries" isModal={true} />
             <Sidebar isModal={true} />
             <div className="w-full lg:ps-64">
-                <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+                <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 lg-[600px] bg-white dark:bg-neutral-800">
                 <>
   {/* Card Section */}
   <div className=" mx-auto">
     {/* Card */}
-    <div className="bg-white dark:bg-neutral-900">
+    <div className="bg-white dark:bg-neutral-800">
       <form onSubmit={(e)=>{AddFueled(e)}}>
         {/* Section */}
         <div className="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">

@@ -1,8 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
-import {Link} from 'react-router-dom'
-const Header = ({image}) => {
-
+import {Link, useOutletContext} from 'react-router-dom'
+const Header = ({image, d_email}) => {
   const [notifications, setNotifications] = useState([])
   const hostServer = import.meta.env.VITE_SERVER_HOST
   const uploadingServer = import.meta.env.VITE_UPLOADING_SERVER
@@ -107,26 +106,7 @@ const Header = ({image}) => {
           </div>
         </div>
         <div className="flex flex-row items-center justify-end gap-2">
-          <button
-            type="button"
-            className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700"
-          >
-            <svg
-              className="flex-shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width={24}
-              height={24}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-            </svg>
-          </button>
+
           <div className="hs-dropdown [--placement:bottom-right] relative inline-flex">
             <button
               id="hs-dropdown-with-header"
@@ -148,99 +128,115 @@ const Header = ({image}) => {
                   Signed in as
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-neutral-300">
-                  james@site.com
+                  {d_email}
                 </p>
               </div>
               <div className="mt-2 py-2 first:pt-0 last:pb-0">
-                <a
-                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                  href="#"
-                >
-                  <svg
-                    className="flex-shrink-0 size-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-                  </svg>
-                  Newsletter
-                </a>
-                <a
-                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                  href="#"
-                >
-                  <svg
-                    className="flex-shrink-0 size-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                    <path d="M3 6h18" />
-                    <path d="M16 10a4 4 0 0 1-8 0" />
-                  </svg>
-                  Purchases
-                </a>
-                <a
-                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                  href="#"
-                >
-                  <svg
-                    className="flex-shrink-0 size-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
-                    <path d="M12 12v9" />
-                    <path d="m8 17 4 4 4-4" />
-                  </svg>
-                  Downloads
-                </a>
-                <a
-                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                  href="#"
-                >
-                  <svg
-                    className="flex-shrink-0 size-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx={9} cy={7} r={4} />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                  Team Account
-                </a>
-              </div>
+
+<a
+  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
+  href="/account/driver/settings/personal"
+>
+<svg
+width={512}
+height={512}
+viewBox="0 0 512 512"
+style={{ color: "currentColor" }}
+xmlns="http://www.w3.org/2000/svg"
+className="h-10 w-10"
+>
+<rect
+width={512}
+height={512}
+x={0}
+y={0}
+rx={30}
+fill="transparent"
+stroke="transparent"
+strokeWidth={0}
+strokeOpacity="100%"
+paintOrder="stroke"
+/>
+<svg
+width="256px"
+height="256px"
+viewBox="0 0 24 24"
+fill="currentColor"
+x={128}
+y={128}
+role="img"
+style={{ display: "inline-block", verticalAlign: "middle" }}
+xmlns="http://www.w3.org/2000/svg"
+>
+<g fill="currentColor">
+<path
+fill="currentColor"
+d="M3 1h12.414L21 6.586V23H3V1Zm2 2v18h14V7.414L14.586 3H5Zm7 6a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3Zm-3.5 1.5a3.5 3.5 0 1 1 7 0a3.5 3.5 0 0 1-7 0ZM6 19a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1h-2v-1a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v1H6v-1Z"
+/>
+</g>
+</svg>
+</svg>
+
+  Personal Info
+</a>
+<a
+  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
+  href="/account/driver/settings/security"
+>
+<svg
+width={512}
+height={512}
+viewBox="0 0 512 512"
+style={{ color: "currentColor" }}
+xmlns="http://www.w3.org/2000/svg"
+className="h-10 w-10"
+>
+<rect
+width={512}
+height={512}
+x={0}
+y={0}
+rx={30}
+fill="transparent"
+stroke="transparent"
+strokeWidth={0}
+strokeOpacity="100%"
+paintOrder="stroke"
+/>
+<svg
+width="256px"
+height="256px"
+viewBox="0 0 48 48"
+fill="currentColor"
+x={128}
+y={128}
+role="img"
+style={{ display: "inline-block", verticalAlign: "middle" }}
+xmlns="http://www.w3.org/2000/svg"
+>
+<g fill="currentColor">
+<path
+fill="none"
+stroke="currentColor"
+strokeLinecap="round"
+strokeLinejoin="round"
+d="M24 43.5c1.595 0 14.7-12.374 15.094-20.26l-1.419-2.026l1.52-2.026V7.22L26.026 4.5L24 5.21l-2.026-.71L8.805 8.106V19.25l1.52 1.965l-1.418 2.026C9.385 32.54 22.417 43.5 24 43.5Z"
+/>
+<path
+fill="none"
+stroke="currentColor"
+strokeLinecap="round"
+strokeLinejoin="round"
+d="M21.974 4.5v8.104l-9.117 6.584H8.805M26.026 4.5v8.104l9.117 6.584h4.052m-.102 4.052l-4.76.06L24 15.44l-10.332 7.8H8.907M24 15.44V43.5"
+/>
+</g>
+</svg>
+</svg>
+
+
+  Security Info
+</a>
+</div>
             </div>
           </div>
         </div>

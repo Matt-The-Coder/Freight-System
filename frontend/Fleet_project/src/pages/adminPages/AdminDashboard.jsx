@@ -130,7 +130,7 @@ const AdminDashboard = ({ socket }) => {
                     {/* Flex */}
                     <div className="flex flex-col gap-5 sm:flex-row  sm:flex border-y border-gray-200 dark:border-neutral-800">
                         {/* Card */}
-                        <div className="p-4 w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:bg-gray-200 before:first:bg-transparent dark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
+                        <div className="p-4 z-[-1] w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:bg-gray-200 before:first:bg-transparent dark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
                             <div>
                                 <i className='bx bx-wind text-4xl' id="trips-car-emission"></i>
                                 <div className="mt-3">
@@ -188,7 +188,7 @@ const AdminDashboard = ({ socket }) => {
                         </div>
                         {/* End Card */}
                         {/* Card */}
-                        <div className="p-4 w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:first:bg-transparentdark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
+                        <div className="p-4 z-[-1] w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:first:bg-transparentdark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
                             <div>
                                 <i className='bx bx-gas-pump text-4xl' id="trips-car-fuel"></i>
                                 <div className="mt-3">
@@ -263,7 +263,7 @@ const AdminDashboard = ({ socket }) => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_blue text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_blue text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-solid_blue' id="trips-car-overall"></i>
                                 </div>
                             </div>
@@ -302,7 +302,7 @@ const AdminDashboard = ({ socket }) => {
                                         </h3>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-teal-100 border border-teal-200 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-teal-100 border border-teal-200 text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-teal-900 ' id="trips-car-completed"></i>
                                 </div>
                             </div>
@@ -341,7 +341,7 @@ const AdminDashboard = ({ socket }) => {
                                         </h3>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_red text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_red text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-solid_red ' id="trips-car-unsuccessful"></i>
                                 </div>
                             </div>
@@ -399,7 +399,7 @@ const AdminDashboard = ({ socket }) => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_dark text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_dark text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-solid_dark' id="trips-car-pending"></i>
                                 </div>
                             </div>
@@ -438,7 +438,7 @@ const AdminDashboard = ({ socket }) => {
                                         </h3>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_yellow text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_yellow text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-solid_yellow text-3xl' id="trips-car-ongoing"></i>
                                 </div>
                             </div>

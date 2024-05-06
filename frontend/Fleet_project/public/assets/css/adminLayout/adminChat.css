@@ -1,3 +1,39 @@
+#notif-container{
+    display: none;
+}
+.notif-container{
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+.notif-title h3{
+    padding: 5px 10px;
+    font-weight: 500;
+}
+#notif-date{
+    text-align: end;
+    font-size: 14px;
+
+}
+#notif-des{
+    font-size: 16px;
+    font-weight: 400;
+}
+.notif-message{
+    cursor: pointer;
+    height: auto;
+    padding: 5px 10px;
+    /* border-bottom: 1px solid var(--dark); */
+}
+@media (prefers-color-scheme: dark) {
+    .notif-message.not-read{
+        background-color: #515355 !important;
+    }
+  }
+.notif-message.not-read{
+    background-color: #e4edfe;
+}
 
 /* Message */
 .AdminMessage {

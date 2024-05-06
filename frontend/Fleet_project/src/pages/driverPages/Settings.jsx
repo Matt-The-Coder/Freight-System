@@ -67,7 +67,6 @@ const Settings = () => {
             if(data.errorMessage){
                 setUsernameError(true)
                 setTimeout(()=>{setUsernameError(false)}, 2000)
-                alert('error')
             }else{
                 setRefresh(!refresh)
                 setSuccess(true)
@@ -395,7 +394,7 @@ const Settings = () => {
 </div>
 {success &&
   <div
-  className="bg-teal-50 w-[100%] lg:w-[30%] hide h-auto border-t-2 border-primary_blue rounded-lg p-4 dark:bg-teal-800/30 fixed bottom-0 right-0"
+  className="bg-teal-50 w-[100%] lg:w-[30%] h-auto border-t-2 border-primary_blue rounded-lg p-4 dark:bg-teal-800/30 fixed bottom-0 right-0"
   role="alert"
 >
   <div className="flex">
@@ -425,7 +424,7 @@ const Settings = () => {
         Successfully updated.
       </h3>
       <p className="text-sm text-gray-700 dark:text-neutral-400">
-        You have successfully updated your security information.
+        You have successfully updated your personal information.
       </p>
     </div>
   </div>
@@ -464,7 +463,7 @@ const Settings = () => {
     <div className="ms-3">
       <h3 className="text-gray-800 font-semibold dark:text-white">Error!</h3>
       <p className="text-sm text-gray-700 dark:text-neutral-400">
-      Please make sure your passwords match.
+      Username already exists!
       </p>
     </div>
   </div>

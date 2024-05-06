@@ -139,7 +139,7 @@ button{
   display: flex;
 }
 .flip-card-front .logo{
-  background-color: var(--light-primary);
+  background-color: #398de1;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -149,7 +149,7 @@ button{
 }
 .flip-card-front .logo .bx{
   font-size: 36px;
-  color: var(--primary);
+  color: #1976d2;
  }
 .flip-card-back {
   top: 0;

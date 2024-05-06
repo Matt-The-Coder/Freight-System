@@ -112,7 +112,7 @@ defaults.plugins.title.font.size = 25
                                         </span>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_blue text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_blue text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-solid_blue' id="trips-car-overall"></i>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ defaults.plugins.title.font.size = 25
                                         </h3>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-teal-100 border border-teal-200 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-teal-100  border-teal-200 text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-teal-900 ' id="trips-car-completed"></i>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@ defaults.plugins.title.font.size = 25
                                         </h3>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_red text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_red text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-solid_red ' id="trips-car-unsuccessful"></i>
                                 </div>
                             </div>
@@ -248,7 +248,7 @@ defaults.plugins.title.font.size = 25
                                         </span>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_dark text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_dark text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-3xl text-solid_dark' id="trips-car-pending"></i>
                                 </div>
                             </div>
@@ -287,7 +287,7 @@ defaults.plugins.title.font.size = 25
                                         </h3>
                                     </div>
                                 </div>
-                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_yellow text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_yellow text-white rounded-full dark:text-blue-200">
                                     <i className='bx bx-car text-solid_yellow text-3xl' id="trips-car-ongoing"></i>
                                 </div>
                             </div>
