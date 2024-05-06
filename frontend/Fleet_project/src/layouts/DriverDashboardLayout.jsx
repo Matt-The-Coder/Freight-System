@@ -2,7 +2,7 @@ import { Outlet, Link, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react';
 import RiseLoader from "react-spinners/RiseLoader";
 import axios from 'axios';
-import Header from '@/components/DriverDashboard/Header';
+import Header from '../components/driverDashboard/Header'
 
 const DriverDashboardLayout = ({ socket }) => {
 
