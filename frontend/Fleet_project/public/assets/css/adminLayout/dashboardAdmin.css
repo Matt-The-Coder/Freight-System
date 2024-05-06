@@ -1,0 +1,138 @@
+.kpi-cards{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-bottom: 20px;
+
+}
+.kpi-cards .trip-box{
+    border-radius: 5px;
+    height: 200px;
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+}
+.kpi-cards .trip-box .trip-box-header{
+    height: 50%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+.kpi-cards .trip-box .trip-box-content{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    border-top: 2px solid var(--dark);
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo{
+    width: 30%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo :is(#trips-car-pending,#trips-car-ongoing,
+#trips-car-completed, #trips-car-unsuccessful, #trips-car-overall, #trips-car-emission, #trips-car-fuel ){
+    background-color: var(--dark);
+    color: var(--light);
+    font-size: 40px;
+    padding: 15px;
+    border-radius: 10px;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo #trips-car-emission{
+    background-color: #8B4513;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo #trips-car-fuel{
+    background-color: #FF4500;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo #trips-car-pending{
+    background-color: #9E9E9E;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo #trips-car-ongoing{
+    background-color: #FBC02D;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo #trips-car-completed{
+    background-color: #388E3C;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo #trips-car-unsuccessful{
+    background-color: #D32F2F;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-logo #trips-car-overall{
+    background-color: var(--primary);
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-number{
+    width: 70%;
+    height: 100%;
+    border-left: 1px solid var(--dark);
+    display: grid;
+    place-items: center;
+}
+.kpi-cards .trip-box .trip-box-content .trip-box-number h3{
+    padding: 15px 30px;
+    color: var(--light);
+    border-radius: 10px;
+    background-color: var(--dark);
+}
+
+.dashboard-charts{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.dashboard-charts .dashboard-charts-container{
+    margin-top: 1.5rem;
+    padding: 40px;
+    width: 50%;
+    border-radius: 10px;
+    border: rgb(230, 227, 227) solid 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.dashboard-charts .dashboard-charts-container .export{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+.dashboard-charts .dashboard-charts-container button{
+    color: white;
+    background-color: var(--button);
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.kpi-card{
+    padding: 20px;
+    border-radius: 10px;
+    height: 300px;
+    border-radius: 10px;
+}
+@media screen and (max-width:877px) {
+    .dashboard-charts .dashboard-charts-container .export{
+        justify-content: center;
+    }
+    .dashboard-charts{
+        flex-direction: column;
+    }
+    .dashboard-charts .dashboard-charts-container{
+        width: 100%;
+    }
+}
+@media screen and (max-width:567px) {
+    .dashboard-charts .dashboard-charts-container{
+        padding: 10px;
+    }
+    .dashboard-charts .dashboard-charts-container .export{
+        justify-content: center;
+    }
+    .kpi-card{
+        padding: 15px;
+        overflow: auto;
+    }
+    .dashboard-charts{
+        flex-direction: column;
+        padding: 12px;
+    }
+    .dashboard-charts .dashboard-charts-container{
+        width: 100%;
+    }
+}

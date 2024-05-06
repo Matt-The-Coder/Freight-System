@@ -1,0 +1,204 @@
+.deliveries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.trip-date{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.trip-date :is(.s-trip-date, .e-trip-date){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.deliveries-container{
+    width: 100%;
+    height: auto;
+    box-shadow: 1px 1px 2px 1px var(--dark);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.deliveries-container .delivery-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+.deliveries-container .delivery-info .h3-container{
+    border-radius: 5px;
+    padding: 10px;
+}
+.deliveries-container .delivery-info h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+.deliveries-container .delivery-info .second-container{
+    display: grid;
+    place-items: center;
+
+}
+.deliveries-container .time-container{
+    width: 100%;
+    padding: 5px;
+    text-align: end;
+
+}
+
+.deliveries-header{
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.deliveries-header .header1{
+    height: 100%;
+    width: 80%;
+    border: 1px solid var(--dark);
+    border-radius: 10px;
+    text-align: center;
+}
+.deliveries-header .header1 h4{
+    font-size: 30px;
+    font-weight: 500;
+}
+.deliveries-content{
+    height: 60%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.deliveries-content .main-content{
+    height: 80%;
+    display: flex;
+}
+.deliveries-content .main-content .content-design{
+    width: 4%;
+}
+.deliveries-content .main-content .content-design h1{
+    font-size: 25px;
+    font-weight: 900;
+}
+.deliveries-content .main-content .content-design p{
+    height: 10px;
+    background-color: rgb(61, 60, 60);
+    width: 1px;
+    margin-left: 6px;
+}
+.deliveries-content .main-content .content-locations{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.deliveries-content .trips-button-pending{
+    height: 20%;
+    text-align: center;
+}
+.deliveries-content .trips-button-pending button{
+    background-color: var(--button);
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.deliveries-content .trips-button-view{
+    height: 20%;
+    text-align: center;
+    display: none;
+}
+.deliveries-content .trips-button-view button{
+    background-color: var(--button);
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.deliveries-content .trips-button{
+    height: 20%;
+    text-align: center;
+}
+.deliveries-content .trips-button button{
+    background-color: var(--button);
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.deliveries-content .odometer {
+    display: grid;
+    place-items: center;
+}
+.deliveries-content .odometer input{
+    padding: 6px 12px;
+    color: black;
+    border-radius: 10px;
+}
+.deliveries-content .odometer p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.filter{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 0 24px 10px 0;
+}
+.filter .filter-container p{
+    font-weight: 400;
+    font-size: 15px;
+}
+.filter .filter-container .filter-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.filter select, .filter option{
+    background-color: white !important;
+    color: black;
+    border-radius:5px;
+    padding: 6px 12px;
+}
+@media screen and (max-width:576px) {
+
+    .trips-list, .deliveries-container{
+        padding: 5px;
+        height: auto;
+    }
+    .deliveries-header .header1{
+        padding: 15px;
+    }
+    .deliveries-header .header1 h4
+    {
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .deliveries-content{
+        gap: 10px;
+        height: auto;
+    }
+    .main-content{
+        gap: 10px;
+        height: auto;
+    }
+    .content-design p{
+        height: 30px !important;
+    }
+    .deliveries-container .delivery-info h3{
+        font-size: 20px;
+    }
+    .deliveries-container .delivery-info .first-container{
+        display: none;
+    }
+    .deliveries-container .time-container{
+        text-align: center;
+    
+    }
+
+}

@@ -1,0 +1,561 @@
+
+@media (prefers-color-scheme: dark) {
+  .mapboxgl-ctrl-directions.mapboxgl-ctrl *{ 
+    background-color: rgb(38 38 38) !important;
+    color: white !important;
+  }
+  .mapbox-directions-step{
+    border-bottom: 1px solid white !important;
+    border-radius: 5px;
+  }
+  .boxInfoNav{
+    border-bottom: 1px white solid !important;
+  }
+}
+:is(.tracking-details) :is(button) {
+  cursor: pointer;
+}
+.switch-pager{
+  width: auto;
+  display: flex;
+
+}
+.switch-pager .switch-pager-content{
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+}
+.switch-pager h4:first-child{
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 50%;
+  border-top-left-radius: 10px;
+  font-weight: 700;
+
+}
+.switch-pager h4:nth-child(2){
+  text-align: center;
+  width: 50%;
+  cursor: pointer;
+  padding: 10px;
+  font-weight: 700;
+  border-top-right-radius: 10px;
+}
+h3{
+  font-weight: 700;
+  font-size: 24px;
+}
+h4{
+  font-weight: 100px;
+}
+p {
+  font-size: 14px;
+}
+.tracking-details{
+  width: 100%;
+  height: auto;
+  padding: 24px;
+
+
+}
+.map-container {
+  z-index: -1;
+    height: 80vh;
+    width: 100%;
+    border: var(--light) 2px solid;
+    border-radius: 10px;
+    }
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib.mapboxgl-compact {
+    visibility: hidden !important;
+  }
+.mapboxgl-ctrl-logo{
+    visibility: hidden !important;
+}
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib{
+    visibility: hidden !important;
+}
+.mapboxgl-ctrl-geocoder input[type='text'] {
+    color: #000 !important;
+}
+button{
+    color: var(--dark-grey);
+}
+#markerTrack{
+    height: 30px;
+    width: 30px;
+    background-image: url('/assets/img/truck-vehicle.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 0.5s ease-in;
+}
+/* Desktop */
+.weatherData{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.weatherTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.weatherData :is(.weatherIcon, .rainfallRate, .air, .temperature, 
+.humidity, .visibility, .solar, .pressure, .weatherAlert) {
+  background-color: var(--light);
+  padding: 12px;
+  border-radius: 20px;
+  height: 100px;
+  width: 300px;
+  perspective: 1000px;
+}
+.flip-card-inner{
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+
+}
+.weatherData :is(.weatherIcon, .rainfallRate, .air, .temperature, 
+.humidity, .visibility, .solar, .pressure, .weatherAlert):hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back{
+  width: 100%;
+  height: 100%;
+  /* -webkit-backface-visibility: hidden; */
+  backface-visibility: hidden;
+}
+.flip-card-front {
+  color: black;
+  gap: 10px;
+  display: flex;
+}
+.flip-card-front .logo{
+  background-color: var(--light-primary);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  border-radius: 10px;
+}
+.flip-card-front .logo .bx{
+  font-size: 36px;
+  color: var(--primary);
+ }
+.flip-card-back {
+  top: 0;
+  overflow: auto;
+  position: absolute;
+  transform: rotateY(180deg);
+  scroll-behavior: smooth;
+}
+:is(.weatherIcon, .rainfallRate, .air, .temperature, 
+.humidity, .visibility, .solar, .pressure, .weatherAlert) :is(*:first-child){
+  font-size: 14px;
+}
+
+
+  .transportDetails {
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    bottom: -70px;
+    right: 100px;
+  }
+  .transportDetails :is(p, h3){
+    color: var(--dark-grey);
+  }
+
+  #showDetail, #showInfo{
+    color: #1976d2;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  .moreInfo {
+    position: absolute;
+    left: 19%;
+    bottom: 50%;
+    display: flex;
+  }
+  .boxInfo{
+    visibility: hidden;
+    height: 430px;
+    width: 320px;
+    position: absolute;
+    left: 50px;
+    top: -90px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px black;
+  }
+  .boxInfoNav{
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid;
+  }
+  .boxInfoNav h4 {
+    padding: 8px;
+    width: 50%;
+    cursor: pointer;
+    text-align: center;
+  }
+  .boxInfoDetail{
+    height: 90%;
+    width: 100%;
+    padding: 20px;
+    overflow-x:hidden;
+  }
+  .boxInfoDetail .trip-status form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items:stretch;
+  }
+  .boxInfoDetail .trip-status form h4{
+    justify-content: end;
+  }
+   #del-status{
+    border-left: 1px solid var(--dark);
+  }
+  .boxInfoDetail .trip-status form :is(select, button, option){
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+  .directions-control.directions-control-instructions, .mapboxgl-ctrl-directions.mapboxgl-ctrl{
+    width: 100%;
+  }
+  .more-info-modal{
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    top: 0;
+    left: 0;
+    position: fixed;
+  }
+  .more-info-background{
+    display: none;
+    height: 100vh;
+    width: 100vw;
+  }
+  .more-info-modal {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    grid-template-columns: 1fr;
+    place-items: center;
+    position: fixed;
+  }
+  .more-info-modal-box{
+    height: auto;
+    width: 400px;
+    position: fixed;
+    padding: 20px;
+    top: 25%;
+    left: 35% ;
+    border-radius: 10px;
+    background-color: var(--light);
+  }
+  .more-info-modal-box .info{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    margin-top: 2%;
+    row-gap: 10px;
+  }
+  .more-info-modal-box .info :is(.info-1 p, .info-2 p){
+    text-align: left;
+  }
+  .more-info-modal-box .info .info-1{
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    width: 100%;
+    gap: 5%;
+    align-items: flex-start;
+  }
+  .more-info-modal-box .info .info-2{
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    width: 100%;
+    gap: 5%;
+    align-items: flex-start;
+  }
+  .more-info-modal-box .exit{
+    text-align: end;
+    cursor: pointer;
+  }
+  .transportCard {
+    height: 220px;
+    width: 800px;
+    position: fixed;
+    right: 30px;
+    bottom: 40px;
+    display: flex;
+    gap: .1%;
+    box-shadow: 0px 0px  2px var(--dark) ;
+  }
+  .transportCard .card{
+    width: 49.9%;
+    padding: 20px;
+  }
+  .transportCard .cardTitle{
+    display: flex;
+    gap: 2%;
+  }
+  #truckBx, #carBx{
+    font-size: 22px;
+  }
+  #speedometer{
+    display: flex;
+    gap: 5%;
+  }
+  .transportData{
+    display: flex;
+    gap: 50px;
+  }
+  .vehicleData{
+    width: 48%;
+    display: flex;
+    justify-content:left;
+    flex-direction: column;
+  }
+  .vehicleData p, .transportData p{
+    color: var(--dark);
+  }
+  .speedometer{
+    margin-top: 15px;
+  }
+  /* Mobile */
+
+  .weatherDataMobile{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .weatherDataMobile details{
+    border: 0.2px solid var(--dark);
+    border-radius: 5px;
+    margin: 1% 0%;
+    width: 100%;
+  }
+  .weatherDataMobile summary{
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 7px;
+    font-weight: 500;
+  }
+  .weatherDataMobile p{
+    border: 1px solid var(--dark);
+    width: 100%;
+    padding: 2px 2%;
+    background-color: var(--grey);
+    font-weight: 300;
+    font-size: 15px;
+  }
+
+  .weatherData>div{
+    background-color: var(--light);
+    border-radius: 20px;
+    padding: 20px;
+    height: 300px;
+  }
+  :is(.weatherData) p{
+    text-align:left;
+    font-weight: 500;
+  }
+
+  .mapboxgl-ctrl-directions.mapboxgl-ctrl *{ 
+    background-color:white;
+    color:  rgb(31 41 55);
+  }
+  /* instructions */
+  .mapbox-directions-instructions{
+    overflow: auto;
+  }
+    /*Title Bar */
+    .mapbox-directions-component.mapbox-directions-route-summary{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .mapbox-directions-component.mapbox-directions-route-summary h1{
+      font-size: 20px;
+      padding: 5px;
+      font-weight: 500;
+    }
+    /* Arrow instruction */
+    .directions-icon.directions-icon-right, .directions-icon.directions-icon-depart,
+     .directions-icon.directions-icon-left, .directions-icon.directions-icon-slight-right,
+     .directions-icon.directions-icon-slight-left, .directions-icon.directions-icon-sharp-left,
+     .directions-icon.directions-icon-sharp-right, .directions-icon.directions-icon-arrive{
+      background-color:#363949 !important;
+    }
+    /* steps */
+    .mapbox-directions-step{
+      border-bottom: 1px solid rgb(31 41 55);
+      border-radius: 5px;
+    }
+    @media screen and (max-width: 1018px) {
+      .moreInfo{
+        left: 0 !important;
+      }
+    }
+    @media screen and (max-width: 937px) {
+      .more-info-modal-box{
+        left: 33%;
+      }
+    }
+  @media screen and (max-width: 768px) {
+    .more-info-modal-box{
+      left: 23%;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .more-info-modal-box{
+      left: 13%;
+    }
+  
+  }
+  @media screen and (max-width: 440px) {
+    .more-info-modal-box{
+      padding: 10px;
+      left: 16%;
+      height: 300px;
+      width: 280px;
+    }
+    .more-info-modal-box h3{
+      font-size: 18px;
+    }
+    }
+  @media screen and (max-width: 388px) {
+  .more-info-modal-box{
+    padding: 10px;
+    left: 12%;
+    height: auto;
+    width: 280px;
+  }
+  .more-info-modal-box h3{
+    font-size: 18px;
+  }
+  }
+  @media screen and (max-width: 348px) {
+    .more-info-modal-box{
+      padding: 10px;
+      left: 7%;
+      height: auto;
+      width: 280px;
+    }}
+  @media screen and (max-width: 768px) {
+    
+  }
+  @media screen and (max-width: 576px) {
+    .DeliveryTracking{
+      height: 130vh;
+    }
+    .tracking-details{
+      padding: 0px;
+      height: auto;
+      border: 1px solid var(--dark);
+      border-radius: 10px;
+    }
+    .instruction-container{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .map-container{
+      height: 69vh;
+    }
+    .mapboxgl-ctrl-directions.mapboxgl-ctrl{
+      width: 100vw;
+      position: relative;
+      min-width: 90% !important;
+    }
+    .detail-slide{
+      position: fixed;
+      bottom: -20px;
+      left: -0px;
+      width: 100vw;
+      height: 10vh;
+      box-shadow: -3px -22px 20px -28px rgba(0,0,0,0.45);
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      transition: height ease-in-out 0.8s;
+      z-index: 100;
+    }
+    .detail-slide.open{
+      height: 60vh;
+      overflow: auto;
+      z-index: 100;
+      transition: height ease-in-out 0.8s;
+      position: fixed;
+      bottom: -1px;
+      left: -0px;
+      width: 100vw;
+      box-shadow: -3px -22px 20px -28px rgba(0,0,0,0.45);
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      transition: height ease-in-out 0.8s;
+    }
+    .arrow-up{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    #arrow-up{
+      margin-top: 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .switch-pager{
+      width: 100%;
+      border-radius: 10px;
+    }
+    .transportCard{
+      position: static;
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      height: auto;
+    }
+    .transportCard .card{
+      height: auto;
+      width: auto;
+      padding: 15px;
+      border-top: 1px solid var(--dark);
+    }
+    .transportCard .card .vehicleData{
+      width: 100%;
+  }
+  .trip-status{
+    margin-bottom: 5%;
+  }
+  .trip-status form{
+    gap: 5%;
+  }
+  .trip-status .status-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+}
