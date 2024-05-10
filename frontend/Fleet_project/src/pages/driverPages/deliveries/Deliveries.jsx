@@ -8,16 +8,31 @@ import '/public/assets/css/adminLayout/deliveries.css';
 const DriverDeliveries = ({ socket }) => {
     const hostServer = import.meta.env.VITE_SERVER_HOST;
     const mapboxToken = import.meta.env.VITE_MAPBOX_API;
-    const { d_username: username, setIsLoading, d_id: id } = useOutletContext();
+    const { d_username, setIsLoading, d_id: id } = useOutletContext();
     const [deliveries, setDeliveries] = useState([]);
     const [deliveriesStorage, setDeliveriesStorage] = useState([])
     const nav = useNavigate()
+    const [refresh, setRefresh] = useState(false)
     const [travelData, setTravelData] = useState([])
     const [travelStorage, setTravelStorage] = useState([])
     const [filterData, setFilterData] = useState('')
     const [onGoing, setOnGoing] = useState([])
     const acceptButtonRef = useRef(null);
 
+    const backLight = document.getElementsByClassName('transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 hs-overlay-backdrop');
+    const side = useRef(null)
+    useEffect(() => {
+      const backLightArray = [...backLight];
+      if (side.current?.className !== "hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[100] md:z-0 bg-white border-e border-gray-200 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700 open opened") {
+        console.log("wala");
+        if(backLightArray){
+          backLightArray?.forEach((e, i)=>{
+            console.log("wala");
+            e.remove()
+          })
+        }
+      }
+    }, [side.current]);
     const setInProgress = async (trip_id, driverFirstname, t_distance, t_weight) => {
         try {
             if (onGoing.length !== 0) {
@@ -151,8 +166,9 @@ const DriverDeliveries = ({ socket }) => {
             setDeliveries(pendingDel);
             console.log(pendingDel)
             setDeliveriesStorage(pendingDel)
+            setRefresh(!refresh)
             setIsLoading(false);
-
+            
         } catch (error) {
             console.log(error);
         }
@@ -161,11 +177,11 @@ const DriverDeliveries = ({ socket }) => {
 
     useEffect(() => {
         getDeliveries();
-    }, [username]);
+    }, []);
 
     return (
         <>
-                         <Breadcrumbs title="History" subtitle="Deliveries" />
+                         <Breadcrumbs title="Deliveries" subtitle="Pending" />
             <Sidebar />
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -211,145 +227,6 @@ const DriverDeliveries = ({ socket }) => {
                         <div className="hs-tooltip inline-block [--trigger:hover] h-auto w-auto sm:[--placement:right]">
                             <div className="hs-tooltip-toggle max-w-xs flex items-center gap-x-3 bg-white shadow-sm dark:bg-neutral-900 dark:border-neutral-700">
 
-                            {/* <div className="hs-dropdown [--placement:bottom-right] relative inline-block">
-                                <button
-                                    id="hs-as-table-table-export-dropdown"
-                                    type="button"
-                                    className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-                                >
-                                    <svg
-                                        className="flex-shrink-0 size-3.5"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                        <polyline points="7 10 12 15 17 10" />
-                                        <line x1={12} x2={12} y1={15} y2={3} />
-                                    </svg>
-                                    Export
-                                </button>
-                                <div
-                                    className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-48 z-10 bg-white shadow-md rounded-lg p-2 mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700"
-                                    aria-labelledby="hs-as-table-table-export-dropdown"
-                                >
-                                    <div className="py-2 first:pt-0 last:pb-0">
-                                        <span className="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-neutral-600">
-                                            Options
-                                        </span>
-                                        <a
-                                            className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                                            href="#"
-                                        >
-                                            <svg
-                                                className="flex-shrink-0 size-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width={24}
-                                                height={24}
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth={2}
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            >
-                                                <rect width={8} height={4} x={8} y={2} rx={1} ry={1} />
-                                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                                            </svg>
-                                            Copy
-                                        </a>
-                                        <a
-                                            className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                                            href="#"
-                                        >
-                                            <svg
-                                                className="flex-shrink-0 size-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width={24}
-                                                height={24}
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth={2}
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            >
-                                                <polyline points="6 9 6 2 18 2 18 9" />
-                                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-                                                <rect width={12} height={8} x={6} y={14} />
-                                            </svg>
-                                            Print
-                                        </a>
-                                    </div>
-                                    <div className="py-2 first:pt-0 last:pb-0">
-                                        <span className="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-neutral-600">
-                                            Download options
-                                        </span>
-                                        <a
-                                            className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                                            href="#"
-                                            onClick={() => { exportData("Xlsx") }}
-                                        >
-                                            <svg
-                                                className="flex-shrink-0 size-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width={16}
-                                                height={16}
-                                                fill="currentColor"
-                                                viewBox="0 0 16 16"
-                                            >
-                                                <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
-                                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-                                            </svg>
-                                            .XLSX
-                                        </a>
-                                        <a
-                                            className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                                            href="#"
-                                            onClick={() => { exportData("Xls") }}
-                                        >
-                                            <svg
-                                                className="flex-shrink-0 size-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width={16}
-                                                height={16}
-                                                fill="currentColor"
-                                                viewBox="0 0 16 16"
-                                            >
-                                                <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
-                                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
-                                            </svg>
-                                            .XLS
-                                        </a>
-                                        <a
-                                            className="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
-                                            href="#"
-                                            onClick={() => { exportData("CSV") }}
-                                        >
-                                            <svg
-                                                className="flex-shrink-0 size-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width={16}
-                                                height={16}
-                                                fill="currentColor"
-                                                viewBox="0 0 16 16"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.517 14.841a1.13 1.13 0 0 0 .401.823c.13.108.289.192.478.252.19.061.411.091.665.091.338 0 .624-.053.859-.158.236-.105.416-.252.539-.44.125-.189.187-.408.187-.656 0-.224-.045-.41-.134-.56a1.001 1.001 0 0 0-.375-.357 2.027 2.027 0 0 0-.566-.21l-.621-.144a.97.97 0 0 1-.404-.176.37.37 0 0 1-.144-.299c0-.156.062-.284.185-.384.125-.101.296-.152.512-.152.143 0 .266.023.37.068a.624.624 0 0 1 .246.181.56.56 0 0 1 .12.258h.75a1.092 1.092 0 0 0-.2-.566 1.21 1.21 0 0 0-.5-.41 1.813 1.813 0 0 0-.78-.152c-.293 0-.551.05-.776.15-.225.099-.4.24-.527.421-.127.182-.19.395-.19.639 0 .201.04.376.122.524.082.149.2.27.352.367.152.095.332.167.539.213l.618.144c.207.049.361.113.463.193a.387.387 0 0 1 .152.326.505.505 0 0 1-.085.29.559.559 0 0 1-.255.193c-.111.047-.249.07-.413.07-.117 0-.223-.013-.32-.04a.838.838 0 0 1-.248-.115.578.578 0 0 1-.255-.384h-.765ZM.806 13.693c0-.248.034-.46.102-.633a.868.868 0 0 1 .302-.399.814.814 0 0 1 .475-.137c.15 0 .283.032.398.097a.7.7 0 0 1 .272.26.85.85 0 0 1 .12.381h.765v-.072a1.33 1.33 0 0 0-.466-.964 1.441 1.441 0 0 0-.489-.272 1.838 1.838 0 0 0-.606-.097c-.356 0-.66.074-.911.223-.25.148-.44.359-.572.632-.13.274-.196.6-.196.979v.498c0 .379.064.704.193.976.131.271.322.48.572.626.25.145.554.217.914.217.293 0 .554-.055.785-.164.23-.11.414-.26.55-.454a1.27 1.27 0 0 0 .226-.674v-.076h-.764a.799.799 0 0 1-.118.363.7.7 0 0 1-.272.25.874.874 0 0 1-.401.087.845.845 0 0 1-.478-.132.833.833 0 0 1-.299-.392 1.699 1.699 0 0 1-.102-.627v-.495Zm8.239 2.238h-.953l-1.338-3.999h.917l.896 3.138h.038l.888-3.138h.879l-1.327 4Z"
-                                                />
-                                            </svg>
-                                            .CSV
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> */}
                                 {/* User Content */}
                                 <button
 
@@ -373,9 +250,6 @@ const DriverDeliveries = ({ socket }) => {
                                         <path d="M10 18h4" />
                                     </svg>
                                     Filter
-                                    <span className="ps-2 text-xs font-semibold text-blue-600 border-s border-gray-200 dark:border-neutral-700 dark:text-blue-500">
-                                        5
-                                    </span>
                                 </button>
                                 {/* End User Content */}
 
@@ -397,77 +271,7 @@ const DriverDeliveries = ({ socket }) => {
                                                     Start Date
                                                 </span>
                                             </label>
-                                            <label
-
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    id="hs-as-filters-dropdown-all"
-                                                    defaultChecked=""
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setDeliveries(deliveriesStorage)
-                                                            setFilter(el.currentTarget.value)
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    All
-                                                </span>
-                                            </label>
-                                            <label
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setFilter(el.currentTarget.value)
-                                                            const filterReports = deliveriesStorage.filter((e, i) => {
-                                                                return e.t_trip_status == "Completed"
-                                                            })
-                                                            setDeliveries(filterReports)
-            
-
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    Completed
-                                                </span>
-                                            </label>
-                                            <label
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setFilter(el.currentTarget.value)
-                                                            const filterReports = deliveriesStorage.filter((e, i) => {
-                                                                return e.t_trip_status == "Cancelled"
-                                                            })
-                                                            setDeliveries(filterReports)
-                                                        
-
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    Cancelled
-                                                </span>
-                                            </label>
-
+        
 
                                         </div>
                                     </div>
@@ -483,22 +287,11 @@ const DriverDeliveries = ({ socket }) => {
             <div className="deliveries-list">
                 {deliveries.length === 0 && (
                     <center>
-                        <h1>No Upcoming Deliveries Yet</h1>
+                        <h1 className='dark:text-white text-gray-600'>No Upcoming Deliveries Yet</h1>
                     </center>
                 )}
-                {deliveries?.map((e, i) => {
-          let statusColor = '';
-          let fontColor = ''
-          if (e.t_trip_status == 'Completed') {
-              statusColor = "#ccfbf1";
-              fontColor = '#115e59'
-          } else if (e.t_trip_status == 'In Progress') {
-              statusColor = '#fef9c3';
-              fontColor = '#854d0e'
-          } else if (e.t_trip_status == 'Cancelled') {
-              statusColor = '#fee2e2';
-              fontColor = '#991b1b'
-          }
+                {deliveries.map((e, i) => {
+
 
                     return (
                         <div className="deliveries-container bg-white border-y dark:bg-neutral-800" key={i}>
@@ -507,8 +300,8 @@ const DriverDeliveries = ({ socket }) => {
                         </div>
                         <div className="delivery-info">
                             <div className="second-container">
-                                <div className="h3-container" style={{ backgroundColor: statusColor }}>
-                                    <h3  style={{ color: fontColor }}>{e.t_trip_status}</h3>
+                                <div className="h3-container bg-light_dark" >
+                                    <h3 className='text-solid_dark' >{e.t_trip_status}</h3>
                                 </div>
                             </div>
 
@@ -548,7 +341,7 @@ const DriverDeliveries = ({ socket }) => {
         </div>
         <div className="mt-1 flex items-center gap-x-2">
           <h3 className="text-xl font-medium text-gray-800 dark:text-neutral-200">
-          {convertTime(travelData[i]?.duration)}
+          {travelData[i]?.duration}
           </h3>
         </div>
       </div>
@@ -585,7 +378,7 @@ const DriverDeliveries = ({ socket }) => {
         </div>
         <div className="mt-1 flex items-center gap-x-2">
           <h3 className="text-xl font-medium text-gray-800 dark:text-neutral-200">
-          {convertKm(travelData[i].distance)} km
+          {convertKm(travelData[i]?.distance)} km
           </h3>
         </div>
       </div>
@@ -602,7 +395,7 @@ const DriverDeliveries = ({ socket }) => {
                                             {/* Heading */}
                                             <div className="ps-2 my-2 first:mt-0">
                                                 <h3 className="text-xs font-medium uppercase text-gray-500 dark:text-neutral-400">
-                                                    {formatDate(e.t_start_date)}
+                                                <span className='font-semibold text-xs'>Start Date:</span>     {formatDate(e.t_start_date)}
                                                 </h3>
                                             </div>
                                             {/* End Heading */}
@@ -633,7 +426,7 @@ const DriverDeliveries = ({ socket }) => {
                                             {/* Heading */}
                                             <div className="ps-2 my-2 first:mt-0">
                                                 <h3 className="text-xs font-medium uppercase text-gray-500 dark:text-neutral-400">
-                                                    {formatDate(e.t_end_date)}
+                                                <span className='font-semibold text-xs'>End Date:</span>        {formatDate(e.t_end_date)}
                                                 </h3>
                                             </div>
                                             {/* End Heading */}

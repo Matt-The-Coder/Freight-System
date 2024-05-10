@@ -87,7 +87,9 @@ const AdminDashboardLayout = ({ socket }) => {
       } else {
         const userData = result.data
         setIsAuth(true);
+
         setUser(userData.authData.user[0])
+        console.log(userData.authData.user[0])
         setRefresh(!refresh)
       }
     } catch (error) {
@@ -100,7 +102,7 @@ const AdminDashboardLayout = ({ socket }) => {
   const getProfilePicture = async () => {
     if(user){
       const result = await axios.get(`${hostServer}/getProfilePicture/${user?.u_id}`)
-      setImage(result.data.image[0].u_profile_picture)
+      setImage(result.data.image[0]?.u_profile_picture)
       setHasImage(true)
     }
     return
@@ -145,8 +147,8 @@ const AdminDashboardLayout = ({ socket }) => {
   }, [])
   useEffect(() => {
     getAccess()
-    getProfilePicture()
     getNotifications()
+    getProfilePicture()
   }, [refresh])
 
   useEffect(() => {

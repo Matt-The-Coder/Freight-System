@@ -1,5 +1,20 @@
 import {Link} from 'react-router-dom'
+import { useEffect, useRef } from 'react';
 const Sidebar = ({access, handleLogout}) => {
+  const backLight = document.getElementsByClassName('transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 hs-overlay-backdrop');
+  const side = useRef(null)
+  useEffect(() => {
+    const backLightArray = [...backLight];
+    if (side.current?.className !== "hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[100] md:z-0 bg-white border-e border-gray-200 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700 open opened") {
+      if(backLightArray){
+        backLightArray?.forEach((e, i)=>{
+          e.remove()
+        })
+      }
+    }
+  }, [side.current]);
+
+
 
     return(
         <>
@@ -248,20 +263,20 @@ const Sidebar = ({access, handleLogout}) => {
           >
             <ul className="pt-2 ps-2">
               <li>
-                <Link
+                <a
                   className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
-                  to="/admin/tracking/trips/ongoing"
+                  href="/admin/tracking/trips/ongoing"
                 >
                   Ongoing Trips
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
+                <a
                   className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
-                  to="/admin/tracking/trips/upcoming"
+                  href="/admin/tracking/trips/upcoming"
                 >
                   Upcoming Trips
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -308,12 +323,12 @@ const Sidebar = ({access, handleLogout}) => {
           >
             <ul className="pt-2 ps-2">
               <li>
-                <Link
+                <a
                   className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
-                  to="/admin/history/list"
+                  href="/admin/history/list"
                 >
                 Deliveries
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

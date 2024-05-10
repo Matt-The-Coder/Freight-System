@@ -85,8 +85,8 @@ authRoute.post('/driver/login', async (req, res) => {
           const role = "driver";
           req.session.token = token;
           req.session.role = role;
-          account.token = token
-          account.role = role
+          // account.token = token
+          // account.role = role
           return res.json({ success: "Login success!", user });
         });
       }
@@ -121,8 +121,8 @@ authRoute.post('/admin/login', async (req, res) => {
           const role = "admin";
           req.session.token = token;
           req.session.role = role;
-          account.token = token
-          account.role = role
+          // account.token = token
+          // account.role = role
           return res.json({ success: "Login success!", user });
         });
       }

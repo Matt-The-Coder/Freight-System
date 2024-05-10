@@ -57,7 +57,7 @@ const EditFuel = () => {
     return (
         <>
         
-        <Breadcrumbs title="History" subtitle="Deliveries" isModal={true} />
+        <Breadcrumbs title="Fuel" subtitle="Fuel Edit" isModal={true} />
             <Sidebar isModal={true} />
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 lg-[600px] bg-white dark:bg-neutral-800">

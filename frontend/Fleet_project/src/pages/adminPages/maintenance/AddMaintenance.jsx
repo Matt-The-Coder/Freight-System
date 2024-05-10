@@ -103,7 +103,7 @@ const AddMaintenance = () => {
   }, [])
   return (
     <>
-                <Breadcrumbs title="Fuel" subtitle="Fuel Management" />
+                <Breadcrumbs title="Maintenance" subtitle="Add Maintenance" />
             <Sidebar />
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -258,7 +258,7 @@ const AddMaintenance = () => {
         Cancel
       </button></a> 
       <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-        Save changes
+        Submit
       </button>
     </div>
       </form>

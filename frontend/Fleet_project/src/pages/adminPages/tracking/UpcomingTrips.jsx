@@ -54,7 +54,7 @@ const UpcomingTrips = ({ socket }) => {
     }, [])
     return (
         <>
-                                <Breadcrumbs title="Tracking" subtitle="Ongoing Trips" />
+                                <Breadcrumbs title="Tracking" subtitle="Pending Trips" />
       <Sidebar/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -123,9 +123,6 @@ const UpcomingTrips = ({ socket }) => {
                                         <path d="M10 18h4" />
                                     </svg>
                                     Filter
-                                    <span className="ps-2 text-xs font-semibold text-blue-600 border-s border-gray-200 dark:border-neutral-700 dark:text-blue-500">
-                                        5
-                                    </span>
                                 </button>
                                 {/* End User Content */}
 
@@ -147,76 +144,7 @@ const UpcomingTrips = ({ socket }) => {
                                                     Start Date
                                                 </span>
                                             </label>
-                                            <label
 
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    id="hs-as-filters-dropdown-all"
-                                                    defaultChecked=""
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setDeliveries(deliveriesStorage)
-                                                            setFilter(el.currentTarget.value)
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    All
-                                                </span>
-                                            </label>
-                                            <label
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setFilter(el.currentTarget.value)
-                                                            const filterReports = deliveriesStorage.filter((e, i) => {
-                                                                return e.t_trip_status == "Completed"
-                                                            })
-                                                            setDeliveries(filterReports)
-            
-
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    Completed
-                                                </span>
-                                            </label>
-                                            <label
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setFilter(el.currentTarget.value)
-                                                            const filterReports = deliveriesStorage.filter((e, i) => {
-                                                                return e.t_trip_status == "Cancelled"
-                                                            })
-                                                            setDeliveries(filterReports)
-                                                        
-
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    Cancelled
-                                                </span>
-                                            </label>
 
 
                                         </div>
@@ -231,7 +159,8 @@ const UpcomingTrips = ({ socket }) => {
                     </div>
             <div className="trips">
                 <div className="trips-list">
-                    {deliveries.length == 0 && <center><h1>No Pending Trips at the Moment</h1></center>}
+                    {deliveries.length == 0 && <center>
+                        <h1 className='dark:text-white text-neutral-900'>No Pending Trips at the Moment</h1></center>}
                     {deliveries.map((e, i) => {
 
                         return (

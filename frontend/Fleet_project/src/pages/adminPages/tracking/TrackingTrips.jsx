@@ -307,9 +307,7 @@ const TrackingTrips = ({ socket }) => {
                                         <path d="M10 18h4" />
                                     </svg>
                                     Filter
-                                    <span className="ps-2 text-xs font-semibold text-blue-600 border-s border-gray-200 dark:border-neutral-700 dark:text-blue-500">
-                                        5
-                                    </span>
+
                                 </button>
                                 {/* End User Content */}
 
@@ -331,76 +329,7 @@ const TrackingTrips = ({ socket }) => {
                                                     Start Date
                                                 </span>
                                             </label>
-                                            <label
 
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    id="hs-as-filters-dropdown-all"
-                                                    defaultChecked=""
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setDeliveries(deliveriesStorage)
-                                                            setFilter(el.currentTarget.value)
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    All
-                                                </span>
-                                            </label>
-                                            <label
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setFilter(el.currentTarget.value)
-                                                            const filterReports = deliveriesStorage.filter((e, i) => {
-                                                                return e.t_trip_status == "Completed"
-                                                            })
-                                                            setDeliveries(filterReports)
-            
-
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    Completed
-                                                </span>
-                                            </label>
-                                            <label
-                                                className="flex py-2.5 px-3"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    className="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    onChange={async (el) => {
-                                                        if (el.currentTarget.checked) {
-                                                            setIsLoading(true)
-                                                            setFilter(el.currentTarget.value)
-                                                            const filterReports = deliveriesStorage.filter((e, i) => {
-                                                                return e.t_trip_status == "Cancelled"
-                                                            })
-                                                            setDeliveries(filterReports)
-                                                        
-
-                                                            setIsLoading(false)
-                                                        }
-                                                    }}
-                                                />
-                                                <span className="ms-3 text-sm text-gray-800 dark:text-neutral-200">
-                                                    Cancelled
-                                                </span>
-                                            </label>
 
 
                                         </div>
@@ -415,7 +344,8 @@ const TrackingTrips = ({ socket }) => {
                     </div>
             <div className="trips">
                 <div className="trips-list">
-                    {deliveries.length == 0 && <center><h1>No OnGoing Trips at the Moment</h1></center>}
+                    {deliveries.length == 0 && <center>
+                        <h1 className='dark:text-white text-neutral-900'>No OnGoing Trips at the Moment</h1></center>}
                     {deliveries.map((e, i) => {
                                                         let statusColor = '';
                                                         let fontColor = ''
@@ -431,67 +361,6 @@ const TrackingTrips = ({ socket }) => {
                                                         }
                         return (
                             <>
-                            {/* <div className="trips-container" key={i}>
-                                <div className="time-container">
-                                    <p>Order Date: {formatDate(e.t_created_date)}</p>
-                                </div>
-                                <div className="trips-header">
-                                    <div className="header-container">
-                                        <div className="header1">
-                                            <div className="row1">
-                                                <div className="img">
-                                                    <img src={`${VITE_UPLOADING_SERVER}${e.d_picture}`} alt="" />
-                                                </div>
-                                                <div className="name">
-                                                    <h4>{`${e.d_first_name} ${e.d_last_name}`}</h4>
-                                                </div>
-
-
-                                            </div>
-                                            <div className="row2">
-                                                <h4>Driver</h4>
-                                            </div>
-                                        </div>
-                                        <div className="header2">
-                                            <h2>{e.t_trackingcode}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="trips-content">
-                                    <div className="trip-date">
-                                        <div className="s-trip-date">
-                                            <h4>Start Date:</h4>
-                                            <p>{formatDate(e.t_start_date)}</p>
-                                        </div>
-                                        <div className="e-trip-date">
-                                            <h4>End Date:</h4>
-                                            <p>{formatDate(e.t_end_date)}</p>
-                                        </div>
-
-                                    </div>
-                                    <div className="main-content">
-                                        <div className="content-design">
-                                            <h1>•</h1>
-                                            <p></p>
-                                            <h1>•</h1>
-                                        </div>
-                                        <div className="content-locations">
-                                            <div className="location-from">
-                                                <h4>From:</h4>
-                                                <p>{e.t_trip_fromlocation}</p>
-                                            </div>
-                                            <div className="location-to">
-                                                <h4>To:</h4>
-                                                <p>{e.t_trip_tolocation}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="trips-button">
-                                        <a href={`/admin/tracking/live?trip_id=${e.t_id}&miles=${convertMiles(travelData[i]?.distance)}&weight=${e.t_totalweight}`}><button>View On Map</button></a>
-                                    </div>
-                                </div>
-
-                            </div> */}
                                                           <div className="trips-container bg-white border-y w-full dark:bg-neutral-800" key={i}>
                                                           <div className="time-container">
                                                               <p  className="text-sm text-gray-600 dark:text-neutral-400">Order Date: {formatDate(e.t_created_date)}</p>

@@ -403,9 +403,39 @@ const DeliveryTracking = ({ socket }) => {
       mapContainer.current.style.display = "block"
     }
   }
+  const openSidebar = () => {
+    const map = document.querySelector('.map-container')
+    const weatherData = document.querySelector('.weatherData')
+    const detailSlide = document.querySelector('.detail-slide')
+    const sideBar = document.querySelector('#application-sidebar')
+    if(weatherData){
+      if(weatherData.style.zIndex == 0){
+        map.style.zIndex = -1
+        weatherData.style.zIndex = -1
+      }else{
+        map.style.zIndex = 0
+        weatherData.style.zIndex = 0
+      }
+
+    }
+    else {
+      if(detailSlide.style.zIndex == 100)
+        {
+          map.style.zIndex = -1
+          detailSlide.style.zIndex = 0
+        }
+        else{
+          map.style.zIndex = 0
+          detailSlide.style.zIndex = 100
+        }
+        console.log(detailSlide)
+    }
+
+
+  }
   return (
     <>
-                             <Breadcrumbs title="History" subtitle="Deliveries" />
+                             <Breadcrumbs title="History" subtitle="Deliveries" openSidebar={openSidebar}/>
             <Sidebar />
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -545,7 +575,7 @@ class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:bord
               </>
 
             </div>
-            <div className="detail-slide bg-white dark:bg-gray-50" ref={detail}>
+            <div className="detail-slide bg-white dark:bg-neutral-800 dark:text-white" ref={detail}>
               <div className="arrow-up">
                 <i className='bx bx-arrow-from-bottom bx-fade-up' id='arrow-up' ref={arrowUp} onClick={() => { openDetail("up") }}></i>
                 <i className='bx bx-arrow-from-top bx-fade-down' id='arrow-up' style={{ display: "none" }} ref={arrowDown} onClick={() => { openDetail("down") }}></i>

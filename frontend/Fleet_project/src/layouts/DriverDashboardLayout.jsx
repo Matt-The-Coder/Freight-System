@@ -135,14 +135,13 @@ const DriverDashboardLayout = ({ socket }) => {
     
       }, [socket]);
     
-    
   return (
 
 <>
 {isLoading && (
         <>
-          <div className="loadingScreen"></div>
-          <div className="loadingHandler">
+          <div className="loadingScreen w-full"></div>
+          <div className="loadingHandler w-full">
             <RiseLoader
               id='loader'
               color="#1976D2"

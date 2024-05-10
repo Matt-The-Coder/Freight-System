@@ -1,10 +1,26 @@
+import { useEffect, useRef } from 'react';
 import {Link} from 'react-router-dom'
 const Sidebar = ({access, handleLogout}) => {
+
+  const backLight = document.getElementsByClassName('transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 hs-overlay-backdrop');
+  const side = useRef(null)
+  useEffect(() => {
+    const backLightArray = [...backLight];
+    if (side.current?.className !== "hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[100] md:z-0 bg-white border-e border-gray-200 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700 open opened") {
+      if(backLightArray){
+        backLightArray?.forEach((e, i)=>{
+          e.remove()
+        })
+      }
+    }
+  }, [side.current]);
+
 
     return(
         <>
           {/* Sidebar */}
           <div
+          ref={side}
     id="application-sidebar"
     className="hs-overlay [--auto-close:lg]
   hs-overlay-open:translate-x-0

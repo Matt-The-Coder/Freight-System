@@ -12,7 +12,7 @@ const Header = ({image}) => {
     >
       <div className="me-5 lg:me-0 lg:hidden">
         {/* Logo */}
-        <Link to="/admin/dashboard" className="logo flex gap-5">
+        <a href="/admin/dashboard" className="logo flex gap-5">
           <img src="/assets/img/kargada-logo.png" alt="Company Logo" className='h-[30px] object-contain'/>
           <div className="logo-name grid place-content-center">
             <span className='text-2xl'>
@@ -23,7 +23,7 @@ const Header = ({image}) => {
             </span>
 
           </div>
-        </Link>
+        </a>
         {/* End Logo */}
       </div>
       <div className="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">

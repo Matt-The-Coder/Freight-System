@@ -93,7 +93,7 @@ const Inprogress = () => {
 
   return (
     <>
-                        <Breadcrumbs title="History" subtitle="Deliveries" />
+                        <Breadcrumbs title="Deliveries" subtitle="In Progress" />
             <Sidebar />
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -101,7 +101,7 @@ const Inprogress = () => {
       <div className="deliveries-list">
         {Object.entries(deliveries).length === 0 && (
           <center>
-            <h1>No Deliveries Assigned Yet</h1>
+            <h1 className='dark:text-white text-gray-600'>No Deliveries Assigned Yet</h1>
           </center>
         )}
         {Object.entries(deliveries).reverse().map(([deliveryId, delivery], i) => {
@@ -223,7 +223,7 @@ const Inprogress = () => {
                                                 {/* Heading */}
                                                 <div className="ps-2 my-2 first:mt-0">
                                                     <h3 className="text-xs font-medium uppercase text-gray-500 dark:text-neutral-400">
-                                                        {formatDate(t_start_date)}
+                                                    <span className='font-semibold text-xs'>Start Date:</span>     {formatDate(t_start_date)}
                                                     </h3>
                                                 </div>
                                                 {/* End Heading */}
@@ -254,7 +254,7 @@ const Inprogress = () => {
                                                 {/* Heading */}
                                                 <div className="ps-2 my-2 first:mt-0">
                                                     <h3 className="text-xs font-medium uppercase text-gray-500 dark:text-neutral-400">
-                                                        {formatDate(t_end_date)}
+                                                    <span className='font-semibold text-xs'>End Date:</span>       {formatDate(t_end_date)}
                                                     </h3>
                                                 </div>
                                                 {/* End Heading */}

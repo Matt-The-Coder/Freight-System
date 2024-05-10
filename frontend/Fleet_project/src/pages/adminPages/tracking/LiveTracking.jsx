@@ -394,10 +394,40 @@ const LiveTracking = ({socket}) => {
     }
   }
 
+  const openSidebar = () => {
+    const map = document.querySelector('.map-container')
+    const weatherData = document.querySelector('.weatherData')
+    const detailSlide = document.querySelector('.detail-slide')
+    const sideBar = document.querySelector('#application-sidebar')
+    if(weatherData){
+      if(weatherData.style.zIndex == 0){
+        map.style.zIndex = -1
+        weatherData.style.zIndex = -1
+      }else{
+        map.style.zIndex = 0
+        weatherData.style.zIndex = 0
+      }
+
+    }
+    else {
+      if(detailSlide.style.zIndex == 100)
+        {
+          map.style.zIndex = -1
+          detailSlide.style.zIndex = 0
+        }
+        else{
+          map.style.zIndex = 0
+          detailSlide.style.zIndex = 100
+        }
+        console.log(detailSlide)
+    }
+
+
+  }
 
   return (
     <>
-                            <Breadcrumbs title="Tracking" subtitle="Live Tracking" />
+                            <Breadcrumbs title="Tracking" subtitle="Live Tracking"  openSidebar={openSidebar} />
       <Sidebar/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">

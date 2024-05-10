@@ -1,4 +1,4 @@
-const Breadcrumbs = ({title, subtitle}) => {
+const Breadcrumbs = ({title, subtitle, openSidebar}) => {
 
     return(
         <>
@@ -37,6 +37,7 @@ const Breadcrumbs = ({title, subtitle}) => {
             {/* End Breadcrumb */}
             {/* Sidebar */}
             <button
+         onClick={openSidebar && (() => openSidebar())}
               type="button"
               className="py-2 px-3 flex justify-center items-center gap-x-1.5 text-xs rounded-lg border border-gray-200 text-gray-500 hover:text-gray-600 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
               data-hs-overlay="#application-sidebar"

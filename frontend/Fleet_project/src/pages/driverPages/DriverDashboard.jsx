@@ -22,6 +22,20 @@ const DriverDashboard = ({socket}) => {
         }
     }, [theme])
 
+    const backLight = document.getElementsByClassName('transition duration fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-opacity-80 hs-overlay-backdrop');
+    const side = useRef(null)
+    useEffect(() => {
+      const backLightArray = [...backLight];
+      if (side.current?.className !== "hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[100] md:z-0 bg-white border-e border-gray-200 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700 open opened") {
+        console.log("wala");
+        if(backLightArray){
+          backLightArray?.forEach((e, i)=>{
+            console.log("wala");
+            e.style.display = "none"
+          })
+        }
+      }
+    }, [side.current]);
     const getDeliveries = async () => {
         try {
             setIsLoading(true)
@@ -71,7 +85,7 @@ defaults.plugins.title.align = "center"
 defaults.plugins.title.font.size = 25
     return (
         <>
-        <Breadcrumbs title="History" subtitle="Deliveries" />
+        <Breadcrumbs title="Kargada" subtitle="Dashboard" />
       <Sidebar/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -155,9 +169,9 @@ defaults.plugins.title.font.size = 25
                                     <i className='bx bx-car text-3xl text-teal-900 ' id="trips-car-completed"></i>
                                 </div>
                             </div>
-                            <a
+                            <Link
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                to="/driver/history/deliveries"
                             >
                                 View Trips
                                 <svg
@@ -174,7 +188,7 @@ defaults.plugins.title.font.size = 25
                                 >
                                     <path d="m9 18 6-6-6-6" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                         {/* End Card */}
                         {/* Card */}
@@ -194,9 +208,9 @@ defaults.plugins.title.font.size = 25
                                     <i className='bx bx-car text-3xl text-solid_red ' id="trips-car-unsuccessful"></i>
                                 </div>
                             </div>
-                            <a
+                            <Link
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                to="/driver/history/deliveries"
                             >
                                 View Trips
                                 <svg
@@ -213,7 +227,7 @@ defaults.plugins.title.font.size = 25
                                 >
                                     <path d="m9 18 6-6-6-6" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                         {/* End Card */}
 
@@ -252,9 +266,9 @@ defaults.plugins.title.font.size = 25
                                     <i className='bx bx-car text-3xl text-solid_dark' id="trips-car-pending"></i>
                                 </div>
                             </div>
-                            <a
+                            <Link
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                to="/driver/deliveries/pending"
                             >
                                 View Trips
                                 <svg
@@ -271,7 +285,7 @@ defaults.plugins.title.font.size = 25
                                 >
                                     <path d="m9 18 6-6-6-6" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                         {/* End Card */}
                         {/* Card */}
@@ -291,9 +305,9 @@ defaults.plugins.title.font.size = 25
                                     <i className='bx bx-car text-solid_yellow text-3xl' id="trips-car-ongoing"></i>
                                 </div>
                             </div>
-                            <a
+                            <Link
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                to="/driver/deliveries/ongoing"
                             >
                                 View Trips
                                 <svg
@@ -310,7 +324,7 @@ defaults.plugins.title.font.size = 25
                                 >
                                     <path d="m9 18 6-6-6-6" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                         {/* End Card */}
 

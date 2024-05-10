@@ -118,7 +118,7 @@ const AdminDashboard = ({ socket }) => {
     defaults.plugins.title.font.size = 25
     return (
 <>
-<Breadcrumbs title="History" subtitle="Deliveries" />
+<Breadcrumbs title="Kargada" subtitle="Dashboard" />
       <Sidebar/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -130,9 +130,10 @@ const AdminDashboard = ({ socket }) => {
                     {/* Flex */}
                     <div className="flex flex-col gap-5 sm:flex-row  sm:flex border-y border-gray-200 dark:border-neutral-800">
                         {/* Card */}
+                        <a href="#emissionCard" className="p-4 z-[-1] w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:bg-gray-200 before:first:bg-transparent dark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
                         <div className="p-4 z-[-1] w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:bg-gray-200 before:first:bg-transparent dark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
                             <div>
-                                <i className='bx bx-wind text-4xl' id="trips-car-emission"></i>
+                                <i className='bx bx-wind text-4xl text-gray-900 dark:text-white' id="trips-car-emission"></i>
                                 <div className="mt-3">
                                     <div className="flex items-center gap-x-2">
                                         <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
@@ -141,7 +142,7 @@ const AdminDashboard = ({ socket }) => {
                                         <div className="hs-tooltip">
                                             <div className="hs-tooltip-toggle">
                                                 <svg
-                                                    className="size-3.5 text-gray-500 dark:text-neutral-500"
+                                                    className="size-3.5 text-gray-500 dark:text-white"
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width={16}
                                                     height={16}
@@ -166,7 +167,7 @@ const AdminDashboard = ({ socket }) => {
                                         </h3>
                                         <a
                                             className="mt-1 lg:mt-0 min-h-[24px] inline-flex items-center gap-x-1 py-0.5 px-2 text-red-700 bg-red-200/70 hover:bg-red-200 rounded-md dark:bg-red-700 dark:hover:bg-red-800 dark:text-red-100"
-                                            href="#"
+                                            href="#emissionCard"
                                         >
                                             <svg
                                                 className="inline-block size-3 self-center"
@@ -186,11 +187,13 @@ const AdminDashboard = ({ socket }) => {
                                 </div>
                             </div>
                         </div>
+                        </a>
                         {/* End Card */}
                         {/* Card */}
+                        <a href="#fuelCard" className="p-4 z-[-1] w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:bg-gray-200 before:first:bg-transparent dark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
                         <div className="p-4 z-[-1] w-full md:p-5 relative before:absolute before:top-0 before:start-0 before:w-full before:h-px sm:before:w-px sm:before:h-full before:first:bg-transparentdark:before:bg-neutral-900 dark:bg-neutral-900 rounded-xl">
                             <div>
-                                <i className='bx bx-gas-pump text-4xl' id="trips-car-fuel"></i>
+                                <i className='bx bx-gas-pump text-4xl text-gray-900 dark:text-white' id="trips-car-fuel"></i>
                                 <div className="mt-3">
                                     <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
                                         Total Fuel Consumption
@@ -221,6 +224,7 @@ const AdminDashboard = ({ socket }) => {
                                 </div>
                             </div>
                         </div>
+                        </a>
                         {/* End Card */}
                     </div>
                     {/* End Grid */}
@@ -306,9 +310,9 @@ const AdminDashboard = ({ socket }) => {
                                     <i className='bx bx-car text-3xl text-teal-900 ' id="trips-car-completed"></i>
                                 </div>
                             </div>
-                            <a
+                            <Link
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                to="/admin/history/list"
                             >
                                 View Trips
                                 <svg
@@ -325,7 +329,7 @@ const AdminDashboard = ({ socket }) => {
                                 >
                                     <path d="m9 18 6-6-6-6" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                         {/* End Card */}
                         {/* Card */}
@@ -345,9 +349,9 @@ const AdminDashboard = ({ socket }) => {
                                     <i className='bx bx-car text-3xl text-solid_red ' id="trips-car-unsuccessful"></i>
                                 </div>
                             </div>
-                            <a
+                            <Link
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                to="/admin/history/list"
                             >
                                 View Trips
                                 <svg
@@ -364,7 +368,7 @@ const AdminDashboard = ({ socket }) => {
                                 >
                                     <path d="m9 18 6-6-6-6" />
                                 </svg>
-                            </a>
+                            </Link>
                         </div>
                         {/* End Card */}
 
@@ -405,7 +409,7 @@ const AdminDashboard = ({ socket }) => {
                             </div>
                             <a
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                href="/admin/tracking/trips/upcoming"
                             >
                                 View Trips
                                 <svg
@@ -444,7 +448,7 @@ const AdminDashboard = ({ socket }) => {
                             </div>
                             <a
                                 className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-800"
-                                href="#"
+                                href="/admin/tracking/trips/ongoing"
                             >
                                 View Trips
                                 <svg
@@ -576,7 +580,7 @@ const AdminDashboard = ({ socket }) => {
 
                         </div>
                     </div>
-                    <div className="kpi-card" >
+                    <div className="kpi-card" id="emissionCard" >
                         <Line id="emissionTable" data={{
                             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                             datasets: [
@@ -688,7 +692,7 @@ const AdminDashboard = ({ socket }) => {
                     </div>
                     {/* End Header */}
                     <div id="hs-multiple-bar-charts" />
-                    <div className="kpi-card" >
+                    <div className="kpi-card" id="fuelCard" >
                         <Line id="fuelTable" data={{
                             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                             datasets: [

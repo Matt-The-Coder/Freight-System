@@ -37,7 +37,6 @@
 .deliveries-container .delivery-info h3{
     font-size: 24px;
     font-weight: 600;
-    color: white;
 }
 .deliveries-container .delivery-info .second-container{
     display: grid;
