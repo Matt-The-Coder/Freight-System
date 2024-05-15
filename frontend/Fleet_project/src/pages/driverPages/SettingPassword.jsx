@@ -7,7 +7,7 @@ import Sidebar from '@/components/driverDashboard/Sidebar'
 import { useEffect, useRef, useState } from 'react'
 const SettingPassword = () => {
     const hostServer = import.meta.env.VITE_SERVER_HOST
-    const { d_id, setIsLoading,image, setImage } = useOutletContext()
+    const { d_id, setIsLoading,image, setImage, handleLogout } = useOutletContext()
     const [uPassword, setUPassword] = useState("")
     const [cP, setCP] = useState("")
     const [nP, setNP] = useState('')
@@ -76,7 +76,7 @@ const SettingPassword = () => {
     return(
         <>
             <Breadcrumbs title="Settings" subtitle="Security Info" />
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
 

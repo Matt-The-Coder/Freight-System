@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 
 
 const AdminHistory = ({ socket }) => {
-    const { image, u_role, u_first_name, u_last_name, setIsLoading } = useOutletContext()
+    const { image, u_role, u_first_name, u_last_name, setIsLoading, handleLogout } = useOutletContext()
     const VITE_UPLOADING_SERVER = import.meta.env.VITE_UPLOADING_SERVER
     const hostServer = import.meta.env.VITE_SERVER_HOST;
     const [deliveriesStorage, setDeliveriesStorage] = useState([])
@@ -42,15 +42,22 @@ const AdminHistory = ({ socket }) => {
         const modalInfo = document.querySelector("#modal" + e)
         const modalbg = document.querySelector("#modalbg" + e)
         const modalb = document.querySelector("#modalb" + e)
+        const deliveriesContainer = document.querySelectorAll('.harang')
+        deliveriesContainer.forEach((e, i)=>{
+          e.style.zIndex = -1
+        })
         modalInfo.style.display = "block"
         modalb.style.display = 'block'
         modalbg.style.display = 'block'
     }
     const closeModal = (e) => {
-        const num = e
         const modalInfo = document.querySelector("#modal" + e)
+        const deliveriesContainer = document.querySelectorAll('.harang')
         const modalbg = document.querySelector("#modalbg" + e)
         const modalb = document.querySelector("#modalb" + e)
+        deliveriesContainer.forEach((e, i)=>{
+          e.style.zIndex = 99
+        })
         modalInfo.style.display = "none"
         modalb.style.display = 'none'
         modalbg.style.display = 'none'
@@ -99,7 +106,7 @@ const AdminHistory = ({ socket }) => {
     return (
         <>
             <Breadcrumbs title="History" subtitle="Deliveries" isModal={true} />
-            <Sidebar isModal={true} />
+            <Sidebar isModal={true} handleLogout={handleLogout}/>
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 lg-[600px] bg-white dark:bg-neutral-800">
                 <div className="w-auto px-6 py-4 flex gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700 items-center">
@@ -171,9 +178,9 @@ const AdminHistory = ({ socket }) => {
                                 {/* End User Content */}
 
                                 {/* Popover Content */}
-                                <div className="hs-tooltip-content !w-auto !transform-none relative left-0 hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity invisible z-10 max-w-xs bg-white border border-gray-100 text-start rounded-xl shadow-md after:absolute after:top-0 after:-start-4 after:w-4 after:h-full dark:bg-neutral-800 dark:border-neutral-700">
+                                <div className="hs-tooltip-content !w-auto !transform-none relative left-0 hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity invisible z-10 max-w-xs bg-white border border-gray-100 text-start rounded-xl shadow-md after:absolute after:top-0 after:-start-4 after:w-4 after:h-full dark:bg-neutral-800 dark:border-neutral-700 tool-content">
                                 <div
-                                        className="transition-[opacity,margin] duration divide-y divide-gray-200 min-w-48 z-10 bg-white shadow-md rounded-lg mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700"
+                                        className="transition-[opacity,margin] duration divide-y divide-gray-200 min-w-48 z-10 bg-white shadow-md rounded-lg mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700 tool-content"
                                 
                                     >
                                         <div className="divide-y divide-gray-200 dark:divide-neutral-700">
@@ -333,7 +340,7 @@ const AdminHistory = ({ socket }) => {
                                                 <div className="flex gap-x-3">
                                                     {/* Icon */}
                                                     <div className="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
-                                                        <div className="relative z-10 size-7 flex justify-center items-center">
+                                                        <div className="relative z-10 size-7 flex justify-center items-center harang">
                                                             <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600" />
                                                         </div>
                                                     </div>
@@ -342,7 +349,7 @@ const AdminHistory = ({ socket }) => {
                                                     <div className="grow pt-0.5 pb-8">
                                                         <h3 className="flex gap-x-1.5 text-lg font-semibold text-gray-800 dark:text-white">
                                                             <svg fill="#1976d2" width="216px" height="216px" viewBox="-1.28 -1.28 34.56 34.56"
-                                                                className='h-8 w-8'
+                                                                className='h-8 w-8 harang'
                                                                 version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#1976d2" transform="rotate(-45)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>pin</title> <path d="M4 12q0-3.264 1.6-6.016t4.384-4.352 6.016-1.632 6.016 1.632 4.384 4.352 1.6 6.016q0 1.376-0.672 3.2t-1.696 3.68-2.336 3.776-2.56 3.584-2.336 2.944-1.728 2.080l-0.672 0.736q-0.256-0.256-0.672-0.768t-1.696-2.016-2.368-3.008-2.528-3.52-2.368-3.84-1.696-3.616-0.672-3.232zM8 12q0 3.328 2.336 5.664t5.664 2.336 5.664-2.336 2.336-5.664-2.336-5.632-5.664-2.368-5.664 2.368-2.336 5.632z"></path> </g></svg>
                                                             Origin
                                                         </h3>
@@ -364,7 +371,7 @@ const AdminHistory = ({ socket }) => {
                                                 <div className="flex gap-x-3">
                                                     {/* Icon */}
                                                     <div className="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
-                                                        <div className="relative z-10 size-7 flex justify-center items-center">
+                                                        <div className="relative z-10 size-7 flex justify-center items-center harang">
                                                             <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600" />
                                                         </div>
                                                     </div>
@@ -804,7 +811,7 @@ const AdminHistory = ({ socket }) => {
                                                         <div className="exit text-end">
                                                             <i className='bx bx-window-close' onClick={() => { closePictureModal(i) }}></i>
                                                         </div>
-                                                        <img src={`${VITE_UPLOADING_SERVER}${e.t_picture}`} className='rounded-lg h-76' />
+                                                        <img src={`${VITE_UPLOADING_SERVER}${e.t_picture}`} className='rounded-lg h-76 object-contain' />
                                                     </div>
 
                                                 </dialog>

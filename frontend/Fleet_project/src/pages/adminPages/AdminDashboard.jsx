@@ -12,7 +12,7 @@ import '/public/assets/css/adminLayout/dashboardAdmin.css';
 
 
 const AdminDashboard = ({ socket }) => {
-    const { u_name, theme, setIsLoading } = useOutletContext()
+    const { u_name, theme, setIsLoading, handleLogout } = useOutletContext()
     const [deliveries, setDeliveries] = useState([])
     const [sustainData, setSustainData] = useState([])
     const [fuelData, setFuelData] = useState()
@@ -119,7 +119,7 @@ const AdminDashboard = ({ socket }) => {
     return (
 <>
 <Breadcrumbs title="Kargada" subtitle="Dashboard" />
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
         <div className="adminDashboard">
@@ -139,27 +139,6 @@ const AdminDashboard = ({ socket }) => {
                                         <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
                                             Total Carbon Emissions
                                         </p>
-                                        <div className="hs-tooltip">
-                                            <div className="hs-tooltip-toggle">
-                                                <svg
-                                                    className="size-3.5 text-gray-500 dark:text-white"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width={16}
-                                                    height={16}
-                                                    fill="currentColor"
-                                                    viewBox="0 0 16 16"
-                                                >
-                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                    <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                                                </svg>
-                                                <span
-                                                    className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
-                                                    role="tooltip"
-                                                >
-                                                    The average number of click rate
-                                                </span>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div className="mt-1 lg:flex lg:justify-between lg:items-center">
                                         <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-neutral-200">
@@ -482,7 +461,7 @@ const AdminDashboard = ({ socket }) => {
 
             <div className="flex flex-col  lg:flex-row sm:flex gap-4 sm:gap-6 lg:mt-6 sm:p-0 p-4">
                 {/* Card */}
-                <div className="w-full md:p-5 min-h-[410px] p-4 flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                <div className="w-full md:p-5 min-h-[410px] p-4 flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700">
                     {/* Header */}
                     <div className="flex justify-between items-center">
                         <div>
@@ -595,7 +574,7 @@ const AdminDashboard = ({ socket }) => {
                     </div>
                 </div>
                 {/* Card */}
-                <div className="w-full p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                <div className="w-full p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700">
                     {/* Header */}
                     <div className="flex justify-between items-center">
                         <div>

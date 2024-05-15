@@ -8,7 +8,7 @@ const FooterSection = () =>
         <a href="#" className="footer__logo">
           Delivery
         </a>
-        <p className="footer__description">
+        <p className="footer__description text-[#282725] dark:text-white">
           Order Products Faster <br /> Easier
         </p>
       </div>
@@ -89,7 +89,7 @@ const FooterSection = () =>
         </a>
       </div>
     </div>
-    <p className="footer__copy">© Kargada. All right reserved</p>
+    <p className="footer__copy text-[#282725] dark:text-white">© Kargada. All right reserved</p>
   </footer>
         </>
     )

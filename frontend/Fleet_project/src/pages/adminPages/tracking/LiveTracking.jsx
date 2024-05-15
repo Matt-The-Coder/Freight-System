@@ -28,7 +28,7 @@ const LiveTracking = ({socket}) => {
   const trip_id = searchParams.get('trip_id');
   const weightInKG = searchParams.get('weight');
   axios.defaults.withCredentials = true;
-  const { setIsLoading, mapStyle, setMapStyle } = useOutletContext();
+  const { setIsLoading, mapStyle, setMapStyle, handleLogout} = useOutletContext();
   const mapboxToken = import.meta.env.VITE_MAPBOX_API;
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API;
   const hostServer = import.meta.env.VITE_SERVER_HOST;
@@ -428,7 +428,7 @@ const LiveTracking = ({socket}) => {
   return (
     <>
                             <Breadcrumbs title="Tracking" subtitle="Live Tracking"  openSidebar={openSidebar} />
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
     <div className="LiveTracking">

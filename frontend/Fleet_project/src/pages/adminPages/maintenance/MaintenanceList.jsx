@@ -12,7 +12,7 @@ const MaintenanceList = () => {
     const nav = useNavigate()
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(5);
-    const {setIsLoading} = useOutletContext()
+    const {setIsLoading, handleLogout} = useOutletContext()
     const [isDelete, setIsDelete] = useState(false)
     const [filterData, setFilterData] = useState("")
     const [maintenanceData, setMaintenanceData] = useState([])
@@ -93,7 +93,7 @@ const MaintenanceList = () => {
     return (
       <>
       <Breadcrumbs title="Maintenance" subtitle="List"/>
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
     <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
         <div className="flex flex-col">
@@ -263,9 +263,9 @@ const MaintenanceList = () => {
                                 {/* End User Content */}
 
                                 {/* Popover Content */}
-                                <div className="hs-tooltip-content !w-auto !transform-none relative left-0 hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity invisible z-10 max-w-xs bg-white border border-gray-100 text-start rounded-xl shadow-md after:absolute after:top-0 after:-start-4 after:w-4 after:h-full dark:bg-neutral-800 dark:border-neutral-700">
+                                <div className="hs-tooltip-content !w-auto !transform-none relative left-0 hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity invisible z-10 max-w-xs bg-white border border-gray-100 text-start rounded-xl shadow-md after:absolute after:top-0 after:-start-4 after:w-4 after:h-full dark:bg-neutral-800 dark:border-neutral-700 tool-content">
                                 <div
-                                        className="transition-[opacity,margin] duration divide-y divide-gray-200 min-w-48 z-10 bg-white shadow-md rounded-lg mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700"
+                                        className="transition-[opacity,margin] duration divide-y divide-gray-200 min-w-48 z-10 bg-white shadow-md rounded-lg mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700 tool-content"
                                 
                                     >
                                         <div className="divide-y divide-gray-200 dark:divide-neutral-700">

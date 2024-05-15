@@ -137,7 +137,7 @@ const DriverDashboardLayout = ({ socket }) => {
     
   return (
 
-<>
+<div className='!overflow-y-scroll'>
 {isLoading && (
         <>
           <div className="loadingScreen w-full"></div>
@@ -160,7 +160,7 @@ const DriverDashboardLayout = ({ socket }) => {
     <Outlet context={{ isLoading, setIsLoading, ...user, mapStyle, setMapStyle, theme, setImage, image, handleLogout}} />
   </>
   {/* End Content */}
-</>
+</div>
 
   )
 }

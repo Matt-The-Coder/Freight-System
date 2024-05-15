@@ -6,7 +6,7 @@ import Sidebar from '@/components/adminDashboard/Sidebar'
 const AdminChat = ({ socket }) => {
   const uploadingServer = import.meta.env.VITE_UPLOADING_SERVER
   const messageContainer = useRef()
-  const { u_username, u_role, u_profile_picture, setIsLoading} = useOutletContext()
+  const { u_username, u_role, u_profile_picture, setIsLoading, handleLogout} = useOutletContext()
   const [messagesRecieved, setMessagesReceived] = useState([]);
   const [message, setMessage] = useState('');
   const [users, setUsers] = useState([])
@@ -93,7 +93,7 @@ const AdminChat = ({ socket }) => {
 
     <>
     <Breadcrumbs title="Chat"/>
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 bg-white dark:bg-neutral-800">
       <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">

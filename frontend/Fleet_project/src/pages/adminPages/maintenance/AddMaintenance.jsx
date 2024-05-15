@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/adminDashboard/Breadcrumbs'
 import Sidebar from '@/components/adminDashboard/Sidebar'
 const AddMaintenance = () => {
 
-  const { setIsLoading } = useOutletContext()
+  const { setIsLoading, handleLogout } = useOutletContext()
   const hostServer = import.meta.env.VITE_SERVER_HOST
   const nav = useNavigate()
   const [vehicleList, setVehicleList] = useState([])
@@ -104,7 +104,7 @@ const AddMaintenance = () => {
   return (
     <>
                 <Breadcrumbs title="Maintenance" subtitle="Add Maintenance" />
-            <Sidebar />
+            <Sidebar handleLogout={handleLogout}/>
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
     <>

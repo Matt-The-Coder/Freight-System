@@ -108,11 +108,11 @@ const AdminLogin = () => {
             />
           </div>
         </>)}
-      <div className="AdminLogin" ref={mainContainer}>
+      <div className="AdminLogin dark:bg-neutral-900" ref={mainContainer}>
         <div className="forms-container">
           <div className="signin-signup">
             <form action="#" className="sign-in-form" onSubmit={(e)=>{handleDriverLogin(e)}}>
-              <h2 className="title">Driver Login</h2>
+              <h2 className="title dark:text-white">Driver Login</h2>
               <div className="input-field">
                 <i className="fas fa-user" />
                 <input type="text" placeholder="Username" required
@@ -144,7 +144,7 @@ const AdminLogin = () => {
         </div> */}
             </form>
             <form action="#" className="sign-up-form" onSubmit={(e)=>{handleAdminLogin(e)}}> 
-              <h2 className="title">Admin Login</h2>
+              <h2 className="title  dark:text-white">Admin Login</h2>
               <div className="input-field">
                 <i className="fas fa-user" />
                 <input type="text" placeholder="Username"  required

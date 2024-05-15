@@ -2,7 +2,7 @@ const ContactSection = () =>
 {
     return (
         <>
-             <section className="contact section container" id="contact">
+             <section className="contact section container w-auto" id="contact">
       <div className="contact__container grid">
         <div className="contact__content">
           <h2 className="section__title-center">

@@ -29,7 +29,7 @@ const DeliveryTracking = ({ socket }) => {
   const weightInKG = searchParams.get('weight');
   axios.defaults.withCredentials = true;
   const [success, setSuccess] = useState(false)
-  const { setIsLoading, mapStyle } = useOutletContext();
+  const { setIsLoading, mapStyle, handleLogout } = useOutletContext();
   const nav = useNavigate()
   const mapboxToken = import.meta.env.VITE_MAPBOX_API;
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API;
@@ -435,8 +435,8 @@ const DeliveryTracking = ({ socket }) => {
   }
   return (
     <>
-                             <Breadcrumbs title="History" subtitle="Deliveries" openSidebar={openSidebar}/>
-            <Sidebar />
+                             <Breadcrumbs title="Deliveries" subtitle="Live Tracking" openSidebar={openSidebar}/>
+            <Sidebar handleLogout={handleLogout}/>
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
     <div className="DeliveryTracking">

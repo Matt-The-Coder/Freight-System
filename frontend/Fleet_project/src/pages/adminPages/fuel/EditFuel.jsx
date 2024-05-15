@@ -5,7 +5,7 @@ import axios from 'axios'
 import Breadcrumbs from '@/components/adminDashboard/Breadcrumbs'
 import Sidebar from '@/components/adminDashboard/Sidebar'
 const EditFuel = () => {
-    const {setIsLoading} = useOutletContext()
+    const {setIsLoading, handleLogout} = useOutletContext()
     const { fuel_id } = useParams()
     const [vehicleList, setVehicleList] = useState([])
     const [driverList, setDriverList] = useState([])
@@ -58,7 +58,7 @@ const EditFuel = () => {
         <>
         
         <Breadcrumbs title="Fuel" subtitle="Fuel Edit" isModal={true} />
-            <Sidebar isModal={true} />
+            <Sidebar isModal={true} handleLogout={handleLogout}/>
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 lg-[600px] bg-white dark:bg-neutral-800">
                 <>

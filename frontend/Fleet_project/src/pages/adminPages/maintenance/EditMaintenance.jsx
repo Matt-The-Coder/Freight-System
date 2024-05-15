@@ -8,7 +8,7 @@ const EditMaintenance = () => {
   const { maintenanceID } = useParams();
   const nav = useNavigate()
   const [success, setSuccess] = useState(false)
-  const { setIsLoading } = useOutletContext()
+  const { setIsLoading, handleLogout } = useOutletContext()
   const hostServer = import.meta.env.VITE_SERVER_HOST
   const [vehicleList, setVehicleList] = useState([])
   const [driverList, setDriverList] = useState([])
@@ -121,7 +121,7 @@ const EditMaintenance = () => {
   return (
     <>
                 <Breadcrumbs title="Maintenance" subtitle="Maintenance Edit" />
-            <Sidebar />
+            <Sidebar handleLogout={handleLogout}/>
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
     <>

@@ -9,7 +9,7 @@ import axios from "axios";
 
 
 const DriverDashboard = ({socket}) => {
-    const { theme, d_username, d_id, setIsLoading } = useOutletContext()
+    const { theme, d_username, d_id, setIsLoading, handleLogout } = useOutletContext()
     const [deliveries, setDeliveries] = useState([])
     const [refresh, setRefresh] = useState(false)
     const hostServer = import.meta.env.VITE_SERVER_HOST;
@@ -86,7 +86,7 @@ defaults.plugins.title.font.size = 25
     return (
         <>
         <Breadcrumbs title="Kargada" subtitle="Dashboard" />
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
                     <div className="adminDashboard">
@@ -106,7 +106,7 @@ defaults.plugins.title.font.size = 25
                                         <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
                                             {deliveries.length}
                                         </h3>
-                                        <span className="flex items-center gap-x-1 text-green-600">
+                                        {/* <span className="flex items-center gap-x-1 text-green-600">
                                             <svg
                                                 className="inline-block size-5 self-center"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ defaults.plugins.title.font.size = 25
                                                 <polyline points="16 7 22 7 22 13" />
                                             </svg>
                                             <span className="inline-block text-lg">1.7%</span>
-                                        </span>
+                                        </span> */}
                                     </div>
                                 </div>
                                 <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_blue text-white rounded-full dark:text-blue-200">
@@ -242,7 +242,7 @@ defaults.plugins.title.font.size = 25
                                         <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
                                             {getNumberTrips("Pending")}
                                         </h3>
-                                        <span className="flex items-center gap-x-1 text-red-600">
+                                        {/* <span className="flex items-center gap-x-1 text-red-600">
                                             <svg
                                                 className="inline-block size-4 self-center"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +259,7 @@ defaults.plugins.title.font.size = 25
                                                 <polyline points="16 17 22 17 22 11" />
                                             </svg>
                                             <span className="inline-block text-lg">1.7%</span>
-                                        </span>
+                                        </span> */}
                                     </div>
                                 </div>
                                 <div className="flex-shrink-0 flex justify-center items-center size-[46px] bg-light_dark text-white rounded-full dark:text-blue-200">

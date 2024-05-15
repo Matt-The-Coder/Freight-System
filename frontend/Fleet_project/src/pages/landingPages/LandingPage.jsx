@@ -126,32 +126,10 @@ const LandingPage = () =>
     };
   }, []);
 
-  // DARK LIGHT THEME
-  useEffect(() => {
-    const themeButton = document.getElementById('theme-button');
-    const darkTheme = 'dark-theme';
-    const iconTheme = 'bx-toggle-right';
 
-    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
-    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-toggle-left' : 'bx-toggle-right';
-
-    const handleThemeToggle = () => {
-      document.body.classList.toggle(darkTheme);
-      themeButton.classList.toggle(iconTheme);
-
-      localStorage.setItem('selected-theme', getCurrentTheme());
-      localStorage.setItem('selected-icon', getCurrentIcon());
-    };
-
-    themeButton.addEventListener('click', handleThemeToggle);
-
-    return () => {
-      themeButton.removeEventListener('click', handleThemeToggle);
-    };
-  }, []);
 
     return (
-        <div className="LandingPage">
+        <div className="LandingPage overflow-x-hidden overflow-y-hidden">
           
   {/*=============== HEADER ===============*/}
   <header className="header" id="header">
@@ -186,7 +164,6 @@ const LandingPage = () =>
               Login
             </a>
           </li>
-          <i className="bx bx-toggle-left change-theme" id="theme-button" />
         </ul>
       </div>
       <div className="nav__toggle" id="nav-toggle">

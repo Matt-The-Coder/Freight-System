@@ -6,7 +6,7 @@ import '/public/assets/css/adminLayout/adminChat.css'
 const DriverChat = ({ socket }) => {
   const uploadingServer = import.meta.env.VITE_UPLOADING_SERVER
   const messageContainer = useRef()
-  const { d_username, d_picture, setIsLoading} = useOutletContext()
+  const { d_username, d_picture, setIsLoading, handleLogout} = useOutletContext()
   const [messagesRecieved, setMessagesReceived] = useState([]);
   const [message, setMessage] = useState('');
   const [users, setUsers] = useState([])
@@ -91,7 +91,7 @@ const DriverChat = ({ socket }) => {
   return (
     <>
     <Breadcrumbs title="Chat"/>
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
       <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-neutral-900 dark:border-neutral-800" href="#">

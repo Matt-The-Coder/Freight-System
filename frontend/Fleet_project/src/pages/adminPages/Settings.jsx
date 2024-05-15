@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 const Settings = () => {
     const hostServer = import.meta.env.VITE_SERVER_HOST
     const uploadingServer = import.meta.env.VITE_UPLOADING_SERVER
-    const { u_id, setIsLoading,image, setImage } = useOutletContext()
+    const { u_id, setIsLoading,image, setImage, handleLogout } = useOutletContext()
     const [fName, setFName] = useState("")
     const [lName, setLName] = useState("")
     const [uName, setUName] = useState("")
@@ -109,7 +109,7 @@ const Settings = () => {
     return (
         <>
             <Breadcrumbs title="Settings" subtitle="Personal Info"/>
-      <Sidebar/>
+      <Sidebar handleLogout={handleLogout}/>
       <div className="w-full lg:ps-64">
     <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 bg-white dark:bg-neutral-800">
         <>

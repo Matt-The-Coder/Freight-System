@@ -6,6 +6,7 @@
   /*========== Colors ==========*/
   --hue: 45;
   --sat: 98%;
+  --footer-color:#4f9be7;
   --first-color: #3d93fd;
   --first-color-light: #4695e4;
   --first-color-lighten: #4f9be7;
@@ -39,6 +40,19 @@
   --z-fixed: 100;
 }
 
+@media (prefers-color-scheme:dark){
+  :root{
+    --first-color-light:  #1976D2;
+    --title-color: hsl(var(--hue), 4%, 95%);
+    --text-color: hsl(var(--hue), 4%, 80%);
+    --body-color: hsl(var(--hue), 8%, 13%);
+    --container-color: hsl(var(--hue), 8%, 16%);
+    --scroll-bar-color: hsl(var(--hue), 4%, 32%);
+    --scroll-thumb-color: hsl(var(--hue), 4%, 24%);
+    --footer-color:hsl(var(--hue), 8%, 16%)
+  }
+
+}
 @media screen and (min-width: 968px) {
   :root {
     --biggest-font-size: 3rem;
@@ -119,9 +133,6 @@ body.dark-theme {
   cursor: pointer;
 }
 
-.dark-theme .footer {
-  background-color: var(--container-color);
-}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
@@ -386,7 +397,7 @@ body.dark-theme {
 
 /*=============== FOOTER ===============*/
 .footer {
-  background-color: var(--first-color-lighten);
+  background-color: var(--footer-color);
   padding-bottom: 2rem;
 }
 
@@ -435,7 +446,6 @@ body.dark-theme {
   margin-top: 6rem;
   text-align: center;
   font-size: var(--smaller-font-size);
-  color: var(--text-color);
 }
 
 /*=============== SCROLL UP ===============*/
@@ -614,5 +624,11 @@ body.dark-theme {
   }
   .scrollup {
     left: 2rem;
+  }
+}
+
+@media screen and (max-width:576px) {
+  .container{
+    width: auto;
   }
 }

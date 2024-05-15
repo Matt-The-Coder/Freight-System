@@ -8,7 +8,7 @@ import '/public/assets/css/adminLayout/deliveries.css';
 const Inprogress = () => {
   const hostServer = import.meta.env.VITE_SERVER_HOST;
   const mapboxToken = import.meta.env.VITE_MAPBOX_API;
-  const { d_username: username, setIsLoading, d_id: id } = useOutletContext();
+  const { d_username: username, setIsLoading, d_id: id, handleLogout } = useOutletContext();
   const [deliveries, setDeliveries] = useState({});
   const [travelData, setTravelData]= useState([])
   const acceptButtonRef = useRef(null);
@@ -94,7 +94,7 @@ const Inprogress = () => {
   return (
     <>
                         <Breadcrumbs title="Deliveries" subtitle="In Progress" />
-            <Sidebar />
+            <Sidebar handleLogout={handleLogout}/>
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
     <div className="DriverDeliveries">

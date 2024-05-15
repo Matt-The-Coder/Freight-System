@@ -5,7 +5,7 @@ import axios from 'axios'
 import Breadcrumbs from '@/components/adminDashboard/Breadcrumbs'
 import Sidebar from '@/components/adminDashboard/Sidebar'
 const AddFuel = () => {
-    const {setIsLoading} = useOutletContext()
+    const {setIsLoading, handleLogout} = useOutletContext()
     const nav = useNavigate()
     const [success, setSuccess] = useState(false)
     const [vehicle, setVehicle] = useState("")
@@ -75,7 +75,7 @@ const AddFuel = () => {
     return (
         <>
                 <Breadcrumbs title="Fuel" subtitle="Add Fuel" isModal={true} />
-            <Sidebar isModal={true} />
+            <Sidebar isModal={true} handleLogout={handleLogout} />
             <div className="w-full lg:ps-64">
                 <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 lg-[600px] bg-white dark:bg-neutral-800">
                 <>

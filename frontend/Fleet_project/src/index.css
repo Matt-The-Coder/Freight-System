@@ -2,26 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-#root{
-  overflow-x: hidden;
-  overflow-y: scroll;
+
+
+:root{
+  --primary:white;
+}
+
+@media (prefers-color-scheme:dark){
+
+  :root{
+    --primary:#262626;
+  }
 }
 
 html{
     scroll-behavior: smooth;
-    overflow-x: hidden;
-    overflow-y: scroll;
   }
 
   
   /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 200px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--primary);
 }
 
 /* Handle */
@@ -92,4 +98,10 @@ transition: all 1s;
 }
 .productServices:nth-child(3){
   transition-delay: 900ms;
+}
+
+@media screen and (max-width:576px) {
+  .tool-content{
+    left: -200% !important;
+  }
 }
