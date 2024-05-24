@@ -18,6 +18,7 @@ const Settings = () => {
     const [cP, setCP] = useState("")
     const [nP, setNP] = useState('')
     const [cNP, setCNP] = useState('')
+    const [isDisabled, setIsDisabled] = useState(true)
     const [refresh, setRefresh] = useState(false)
     const [oldPasswordError, setOldPasswordError] = useState(false)
     const [mismatchedPassword, setMismatchedPassword] = useState(false)
@@ -145,7 +146,10 @@ const Settings = () => {
                 <div>
                 <input type="file" name="prof-pic"  ref={profilePic} hidden/>
                   <button
-                  onClick={changePicture} 
+                  onClick={()=>{
+                    changePicture()
+                    setIsDisabled(false)
+                  }} 
                     type="button"
                     className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
                   >
@@ -207,11 +211,15 @@ const Settings = () => {
               <input
                 id="af-account-full-name"
                 type="text"
-                value={fName} onChange={(e) => { setFName(e.target.value) }} required
+                value={fName} onChange={(e) => { 
+                  setIsDisabled(false)
+                  setFName(e.target.value) }} required
                 className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
               />
               <input
-              value={lName} onChange={(e) => { setLName(e.target.value) }} required
+              value={lName} onChange={(e) => { 
+                setIsDisabled(false)
+                setLName(e.target.value) }} required
                 type="text"
                 className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
               />
@@ -229,7 +237,9 @@ const Settings = () => {
           {/* End Col */}
           <div className="sm:col-span-9">
             <input
-             value={uName} onChange={(e) => { setUName(e.target.value) }}
+             value={uName} onChange={(e) => { 
+              setIsDisabled(false)
+              setUName(e.target.value) }}
               id="af-account-email"
               type="text"
               className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -249,7 +259,9 @@ const Settings = () => {
           {/* End Col */}
           <div className="sm:col-span-9">
             <input
-             value={email} onChange={(e) => { setEmail(e.target.value) }}
+             value={email} onChange={(e) => { 
+              setIsDisabled(false)
+              setEmail(e.target.value) }}
               id="af-account-email"
               type="email"
               className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -264,6 +276,7 @@ const Settings = () => {
         {/* End Grid */}
         <div className="mt-5 flex justify-end gap-x-2">
           <button
+          disabled={isDisabled}
             type='submit'
             className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
           >

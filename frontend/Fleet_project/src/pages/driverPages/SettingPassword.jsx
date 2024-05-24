@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 const SettingPassword = () => {
     const hostServer = import.meta.env.VITE_SERVER_HOST
     const { d_id, setIsLoading,image, setImage, handleLogout } = useOutletContext()
+    const [isDisabled, setIsDisabled] = useState(true)
     const [uPassword, setUPassword] = useState("")
     const [cP, setCP] = useState("")
     const [nP, setNP] = useState('')
@@ -116,7 +117,9 @@ const SettingPassword = () => {
               <input
                 id="af-account-password"
                 type="text"
-                onChange={(e) => { setCP(e.target.value) }}  required
+                onChange={(e) => { 
+                  setIsDisabled(false)
+                  setCP(e.target.value) }}  required
                 className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                 placeholder="Enter Current Password"
               />
@@ -138,26 +141,33 @@ const SettingPassword = () => {
                 type="text"
                 className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                 placeholder="Enter New Password"
-                onChange={(e) => { setNP(e.target.value) }} pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}' title='Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"' required
+                onChange={(e) => { 
+                  setIsDisabled(false)
+                  setNP(e.target.value) }} pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}' title='Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"' required
               />
               <input
                 type="text"
                 className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                 placeholder="Re-Enter New Password"
-                onChange={(e) => { setCNP(e.target.value) }} pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}' title='Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"' required
+                onChange={(e) => {
+                  setIsDisabled(false)
+                  setCNP(e.target.value) }} pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}' title='Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"' required
               />
             </div>
           </div>
         </div>
         {/* End Grid */}
         <div className="mt-5 flex justify-end gap-x-2">
+          <a href="/driver/dashboard">
           <button
             type="button"
             className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
           >
             Cancel
           </button>
+          </a>
           <button
+          disabled={isDisabled}
             type="submit"
             className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
           >

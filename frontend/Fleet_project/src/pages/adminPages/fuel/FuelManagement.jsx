@@ -130,7 +130,7 @@ const FuelManagement = () => {
             <Sidebar handleLogout={handleLogout}/>
             <div className="w-full lg:ps-64">
                 <div className="sm:space-y-6">
-                    <div className="flex flex-col">
+                    <div className="flex flex-col overflow-hidden">
                         <div className="w-auto px-6 py-4 flex gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700 items-center">
                             {/* Input */}
                             <div className="flex gap-1">
