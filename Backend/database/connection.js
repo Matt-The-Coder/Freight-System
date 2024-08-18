@@ -7,20 +7,20 @@ const mysql = require('mysql');
 //     database: "freight",
 //     port: "3307"
 // })
-// const db = mysql.createPool({
-//     host: 'bjxwp9zadzdyfnlsid8b-mysql.services.clever-cloud.com',
-//     user:'uyo3diweamt0qrca',
-//     password:'SSSLkR8oQLwUFVl0kyWU',
-//     database: "bjxwp9zadzdyfnlsid8b",
-//     port: "3306"
-// })
-
 const db = mysql.createPool({
-    host: '194.110.173.106',
-    user:'sust_matthew',
-    password:'qwe',
-    database: "sust_main",
+    host: 'bjxwp9zadzdyfnlsid8b-mysql.services.clever-cloud.com',
+    user:'uyo3diweamt0qrca',
+    password:'SSSLkR8oQLwUFVl0kyWU',
+    database: "bjxwp9zadzdyfnlsid8b",
+    port: "3306"
 })
+
+// const db = mysql.createPool({
+//     host: '194.110.173.106',
+//     user:'sust_matthew',
+//     password:'qwe',
+//     database: "sust_main",
+// })
 
 module.exports = async (query) => {
 return new Promise((resolve, reject)=>{
